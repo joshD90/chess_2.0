@@ -1,31 +1,20 @@
-import defineGrid from "./defineGrid";
-import setSquarePos from "./setSquarePos";
+import { setSingleSquarePos } from "./setSquarePos";
 
-const width = 160;
-const grid = defineGrid();
-
-describe("test for setting our x and y coords", () => {
-  const colors = ["white", "black"];
-  colors.forEach((color) => {
-    test("check that it is an array", () => {
-      expect(setSquarePos(grid, color, width)).toBeInstanceOf(Array);
-    });
-    test("check that we have 64 points", () => {
-      expect(setSquarePos(grid, color, width)).toHaveLength(64);
-    });
+describe("testing setSingleSquarePos functionality works", () => {
+  test("check that it returns an object with correct properties", () => {
+    expect(setSingleSquarePos({ row: 1, col: 2 }, "white", 320)).toHaveProperty(
+      "x"
+    );
+    expect(setSingleSquarePos({ row: 1, col: 2 }, "white", 320)).toHaveProperty(
+      "y"
+    );
   });
-
-  test("check coord a1 for white", () => {
-    expect(setSquarePos(grid, "white", width)[0]).toEqual({
-      x: width / 16,
-      y: width / 16,
-    });
+  test("check that output is right for white square", () => {
+    expect(setSingleSquarePos({ row: 0, col: 0 }, "white", 320).x).toBe(20);
+    expect(setSingleSquarePos({ row: 0, col: 0 }, "white", 320).y).toBe(300);
   });
-
-  test("check coord a1 for black", () => {
-    expect(setSquarePos(grid, "white", width)[0]).toEqual({
-      x: width - width / 16,
-      y: width - width / 16,
-    });
+  test("check that output is right for black square", () => {
+    expect(setSingleSquarePos({ row: 0, col: 0 }, "black", 320).x).toBe(300);
+    expect(setSingleSquarePos({ row: 0, col: 0 }, "black", 320).y).toBe(20);
   });
 });

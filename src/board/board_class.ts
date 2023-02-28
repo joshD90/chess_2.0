@@ -1,5 +1,6 @@
 import drawAllSquares from "../draw/drawAllSquares";
-import { GridSquare, SquarePos } from "../types/boardTypes";
+import drawAll from "../draw/drawAll";
+import { GridSquare } from "../types/boardTypes";
 import { canvas } from "./canvasContext";
 import defineGrid from "./defineGrid";
 import resetSquarePos from "./setSquarePos";
@@ -32,9 +33,8 @@ export class Board {
     this.width = canvas.width;
     this.squareWidth = this.width / 8;
     this.updateSquarePos();
-    console.log("square positions redrawn");
-    drawAllSquares(this.grid);
+    drawAll();
   }
 }
 
-export const board = new Board(canvas, "black");
+export const board = new Board(canvas, "white");

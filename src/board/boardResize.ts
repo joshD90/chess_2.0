@@ -1,6 +1,5 @@
 import { canvas } from "./canvasContext";
 import { board } from "./board_class";
-import drawSquare from "../draw/drawSquare";
 import sizeByWindow from "./sizeByWindow";
 
 export const resizeBoard = () => {

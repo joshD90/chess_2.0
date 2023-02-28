@@ -28,7 +28,7 @@ export const setSingleSquarePos = (
   const row = color === "white" ? anNum.row : 7 - anNum.row;
 
   const x = col * squareWidth + halfSquareWidth;
-  const y = row * squareWidth + halfSquareWidth;
+  const y = boardWidth - (row * squareWidth + halfSquareWidth);
 
   return { x: x, y: y };
 };
