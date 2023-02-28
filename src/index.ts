@@ -1,12 +1,10 @@
-import drawSquare from "./draw/drawSquare";
+import addListeners from "./board/listeners";
 
-//Set our variables which are the hook into the main index
-const canvasContainer = document.querySelector(".canvasContainer");
+import { board } from "./board/board_class";
+import drawAll from "./draw/drawAll";
 
-const canvas = document.querySelector("#canvas") as HTMLCanvasElement;
-canvas.height = canvas.width;
+addListeners();
 
-drawSquare();
+board.makeGrid();
 
-// //check for resize
-// window.addEventListener("resize", resizeBoard);
+drawAll();
