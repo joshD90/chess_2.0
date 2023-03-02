@@ -39,7 +39,6 @@ const createMoveDirections = (
   switch (type) {
     case "queen":
       return queenMove;
-
     case "king":
       return kingMove;
     case "rook":

@@ -8,7 +8,7 @@ const drawSquare = (square: SquarePos, squareColor: string) => {
   const x = square.x - board.width / 16;
   const y = square.y - board.width / 16;
   const width = board.width / 8;
-  const color = squareColor === "white" ? "white" : "black";
+  const color = squareColor === "white" ? "white" : "gray";
 
   //draw our square
   ctx.beginPath();

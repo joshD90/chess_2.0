@@ -33,8 +33,7 @@ export class Board {
     this.width = canvas.width;
     this.squareWidth = this.width / 8;
     this.updateSquarePos();
-    drawAll();
   }
 }
 
-export const board = new Board(canvas, "white");
+export const board = new Board(canvas, "black");
