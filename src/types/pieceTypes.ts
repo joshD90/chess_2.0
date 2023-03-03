@@ -1,4 +1,4 @@
-import { AN } from "./boardTypes";
+import { AN, Coord } from "./boardTypes";
 
 export type PieceType = {
   color: string;
@@ -8,4 +8,8 @@ export type PieceType = {
   range: number;
   image: HTMLImageElement;
   isActivated: boolean;
+  movingCoord: Coord;
+  activate: () => boolean;
+  deactivate: () => boolean;
+  setMovingCoord: (mouseCoord: Coord) => Coord;
 };

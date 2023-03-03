@@ -5,6 +5,7 @@ import { drawPiece } from "./drawSinglePiece";
 
 const drawAllPieces = (colorPieces: PieceType[]) => {
   colorPieces.forEach((piece) => {
+    if (piece.isActivated) return;
     drawPiece(piece, board);
   });
 };

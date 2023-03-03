@@ -36,4 +36,4 @@ export class Board {
   }
 }
 
-export const board = new Board(canvas, "black");
+export const board = new Board(canvas, "white");

@@ -1,8 +1,9 @@
 import { board } from "../board/board_class";
-import { AN } from "../types/boardTypes";
+import { AN, Coord } from "../types/boardTypes";
 import createMoveDirections from "./createMoveDirections";
 import creatingRange from "./creatingRange";
 import { creatingImage } from "./creatingImage";
+import setMovingPieceCoord from "../movePiece/setMovingPieceCoord";
 
 export class Piece {
   color: string;
@@ -11,6 +12,8 @@ export class Piece {
   moveDirections: string[];
   range: number;
   image: HTMLImageElement;
+  isActivated: boolean;
+  movingCoord: Coord;
 
   constructor(color: string, an: AN, type: string) {
     this.color = color;
@@ -19,6 +22,8 @@ export class Piece {
     this.moveDirections = this.setMoveDirections();
     this.range = this.setRange();
     this.image = this.setImage();
+    this.isActivated = false;
+    this.movingCoord = { x: 0, y: 0 };
   }
   //these are used in making the rest of our piece properties from existing data
   setMoveDirections() {
@@ -29,5 +34,14 @@ export class Piece {
   }
   setImage() {
     return creatingImage(this.color, this.type);
+  }
+  activate() {
+    return (this.isActivated = true);
+  }
+  deactivate() {
+    return (this.isActivated = false);
+  }
+  setMovingCoord(mouseCoord: Coord) {
+    return (this.movingCoord = mouseCoord);
   }
 }

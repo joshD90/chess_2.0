@@ -1,8 +1,9 @@
 import { ctx } from "../board/canvasContext";
 import { board } from "../board/board_class";
-import { SquarePos } from "../types/boardTypes";
+import { Coord } from "../types/boardTypes";
+
 //draw a square on the canvas
-const drawSquare = (square: SquarePos, squareColor: string) => {
+const drawSquare = (square: Coord, squareColor: string) => {
   if (!ctx) return;
 
   const x = square.x - board.width / 16;
