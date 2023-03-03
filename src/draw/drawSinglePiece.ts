@@ -9,9 +9,8 @@ export const drawPiece = (piece: PieceType, board: Board) => {
   //convert our algebraic notation to x and y coords
   const pieceCoord = anToCoord(piece.an, board);
   const squareWidth = board.width / 8;
-  const x = pieceCoord.x - squareWidth / 2;
-  const y = pieceCoord.y - squareWidth / 2;
-  drawPieceByCoord({ x: x, y: y }, board, piece);
+
+  drawPieceByCoord({ x: pieceCoord.x, y: pieceCoord.y }, board, piece);
 };
 
 export const drawPieceByCoord = (
@@ -20,10 +19,15 @@ export const drawPieceByCoord = (
   piece: PieceType
 ) => {
   if (!ctx) return;
-  const { x, y } = coord;
   //set our parameters
   const squareWidth = board.width / 8;
   const img = piece.image;
+  //we need to adjust our x and y values so that the center of the picture is drawn on the central coord
+
+  let { x, y } = coord;
+  x = x - squareWidth / 2;
+  y = y - squareWidth / 2;
+
   //draw that image to the canvas params 2-4 are for source pic, last 4 are for canvas drawing
   ctx.drawImage(img, 0, 0, 45, 45, x, y, squareWidth, squareWidth);
 };
