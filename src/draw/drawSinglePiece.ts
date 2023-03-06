@@ -3,7 +3,7 @@ import { ctx } from "../board/canvasContext";
 import { Coord } from "../types/boardTypes";
 import { PieceType } from "../types/pieceTypes";
 import anToCoord from "../utils/anToCoord";
-
+//draws the piece by AN - plugging the full piece in
 export const drawPiece = (piece: PieceType, board: Board) => {
   if (!ctx) return;
   //convert our algebraic notation to x and y coords
@@ -12,7 +12,7 @@ export const drawPiece = (piece: PieceType, board: Board) => {
 
   drawPieceByCoord({ x: pieceCoord.x, y: pieceCoord.y }, board, piece);
 };
-
+//draws the piece by coordinate - full piece cannot be plugged in
 export const drawPieceByCoord = (
   coord: Coord,
   board: Board,

@@ -1,5 +1,3 @@
-import drawAllSquares from "../draw/drawAllSquares";
-import drawAll from "../draw/drawAll";
 import { GridSquare } from "../types/boardTypes";
 import { canvas } from "./canvasContext";
 import defineGrid from "./defineGrid";

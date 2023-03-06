@@ -34,7 +34,3 @@ describe("each element should fit coordinate format", () => {
     });
   });
 });
-
-// test("dummy stand in test", () => {
-//   expect(1).toBe(1);
-// });
