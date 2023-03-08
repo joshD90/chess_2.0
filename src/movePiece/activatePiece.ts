@@ -4,6 +4,7 @@ import whitePieces from "../pieces/whitePieces";
 import blackPieces from "../pieces/blackPieces";
 import { canvas } from "../board/canvasContext";
 import mouseRelCanvas from "../utils/mouseRelCanvas";
+import checkAllDirections from "../pieceDirection/checkAllDirections";
 
 const activatePiece = (e: MouseEvent) => {
   //we only want to be able to click our own pieces and move them
@@ -16,5 +17,8 @@ const activatePiece = (e: MouseEvent) => {
 
   //activate a piece that it is over
   pieceSelected.activate();
+  pieceSelected.movingCoord = mousePos;
+
+  checkAllDirections(pieceSelected, board);
 };
 export default activatePiece;

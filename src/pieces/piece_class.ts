@@ -3,7 +3,6 @@ import { AN, Coord } from "../types/boardTypes";
 import createMoveDirections from "./createMoveDirections";
 import creatingRange from "./creatingRange";
 import { creatingImage } from "./creatingImage";
-import setMovingPieceCoord from "../movePiece/setMovingPieceCoord";
 
 export class Piece {
   color: string;

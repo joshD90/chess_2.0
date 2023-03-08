@@ -13,7 +13,7 @@ const queenMove = [
 const kingMove = queenMove;
 const rookMove = ["up", "down", "left", "right"];
 const bishopMove = [
-  " diagUpLeft",
+  "diagUpLeft",
   "diagUpRight",
   "diagDownLeft",
   "diagDownRight",
