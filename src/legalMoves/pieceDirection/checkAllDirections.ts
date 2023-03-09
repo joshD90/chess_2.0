@@ -1,7 +1,7 @@
 import _ from "lodash";
 
-import { PieceType } from "../types/pieceTypes";
-import { Board } from "../board/board_class";
+import { PieceType } from "../../types/pieceTypes";
+import { Board } from "../../board/board_class";
 import checkSingleDirection from "./checkSingleDirection";
 import { legalDots } from "./legalDots";
 

@@ -1,9 +1,9 @@
-import anToCoord from "../utils/anToCoord";
+import anToCoord from "../../utils/anToCoord";
 
-import { Board } from "../board/board_class";
-import { CoordDiff } from "../types/legalMoveTypes";
-import { AN } from "../types/boardTypes";
-import { GridSquare } from "../types/boardTypes";
+import { Board } from "../../board/board_class";
+import { CoordDiff } from "../../types/legalMoveTypes";
+import { AN } from "../../types/boardTypes";
+import { GridSquare } from "../../types/boardTypes";
 
 const whatsNextSquare = (
   coordDiff: CoordDiff,

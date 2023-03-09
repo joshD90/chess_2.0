@@ -1,5 +1,5 @@
-import { Board } from "../board/board_class";
-import { CoordDiff } from "../types/legalMoveTypes";
+import { Board } from "../../board/board_class";
+import { CoordDiff } from "../../types/legalMoveTypes";
 
 const setDxDy = (direction: string, board: Board): CoordDiff => {
   let unitX: number;
@@ -51,11 +51,11 @@ const setDxDy = (direction: string, board: Board): CoordDiff => {
       break;
     case "fouroclock":
       unitX = 2;
-      unitY = -1;
+      unitY = 1;
       break;
     case "fiveoclock":
       unitX = 1;
-      unitY = -2;
+      unitY = 2;
       break;
     case "sevenoclock":
       unitX = -1;

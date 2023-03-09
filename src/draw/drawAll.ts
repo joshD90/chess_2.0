@@ -6,7 +6,7 @@ import blackPieces from "../pieces/blackPieces";
 import whitePieces from "../pieces/whitePieces";
 import drawMovingPiece from "./drawMovingPiece";
 import drawLegalDots from "./drawLegalDots";
-import { legalDots } from "../pieceDirection/legalDots";
+import { legalDots } from "../legalMoves/pieceDirection/legalDots";
 
 const drawAll = (board: Board) => {
   drawAllSquares(board.grid);

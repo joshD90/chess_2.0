@@ -4,7 +4,7 @@ import whitePieces from "../pieces/whitePieces";
 import blackPieces from "../pieces/blackPieces";
 import { canvas } from "../board/canvasContext";
 import mouseRelCanvas from "../utils/mouseRelCanvas";
-import checkAllDirections from "../pieceDirection/checkAllDirections";
+import checkAllDirections from "../legalMoves/pieceDirection/checkAllDirections";
 
 const activatePiece = (e: MouseEvent) => {
   //we only want to be able to click our own pieces and move them
