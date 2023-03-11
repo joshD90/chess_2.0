@@ -7,5 +7,5 @@ export type CoordDiff = {
 
 export type LegalMove = {
   square: GridSquare;
-  opponentSquare: boolean;
+  moveType: "move" | "attack" | "castle" | "enPassante";
 };

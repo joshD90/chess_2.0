@@ -26,6 +26,7 @@ const deactivatePiece = (e: MouseEvent) => {
   //update our pieces new AN and Deactivate
   pieceToChange.deactivate();
   pieceToChange.an = squareToDrop?.an;
+  board.color = board.color === "white" ? "black" : "white";
 };
 
 export default deactivatePiece;

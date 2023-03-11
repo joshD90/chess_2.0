@@ -9,6 +9,7 @@ export type PieceType = {
   image: HTMLImageElement;
   isActivated: boolean;
   movingCoord: Coord;
+  firstMove: boolean;
   activate: () => boolean;
   deactivate: () => boolean;
   setMovingCoord: (mouseCoord: Coord) => Coord;

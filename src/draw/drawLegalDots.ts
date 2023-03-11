@@ -1,10 +1,10 @@
-import { GridSquare } from "../types/boardTypes";
 import { ctx } from "../board/canvasContext";
 import drawDot from "./drawDot";
+import { LegalMove } from "../types/legalMoveTypes";
 
-const drawLegalDots = (legalMoves: GridSquare[]): void => {
+const drawLegalDots = (legalMoves: LegalMove[]): void => {
   if (!ctx) return;
-  legalMoves.forEach((square) => drawDot(square.coord, ctx!));
+  legalMoves.forEach((square) => drawDot(square.square.coord, ctx!));
 };
 
 export default drawLegalDots;

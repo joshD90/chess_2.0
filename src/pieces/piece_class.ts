@@ -13,6 +13,7 @@ export class Piece {
   image: HTMLImageElement;
   isActivated: boolean;
   movingCoord: Coord;
+  firstMove: boolean;
 
   constructor(color: string, an: AN, type: string) {
     this.color = color;
@@ -23,6 +24,7 @@ export class Piece {
     this.image = this.setImage();
     this.isActivated = false;
     this.movingCoord = { x: 0, y: 0 };
+    this.firstMove = true;
   }
   //these are used in making the rest of our piece properties from existing data
   setMoveDirections() {

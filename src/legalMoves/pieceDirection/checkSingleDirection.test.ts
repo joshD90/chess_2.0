@@ -25,6 +25,7 @@ test("checking to make sure that it calls the correct functions the right number
     isActivated: false,
     image: image,
     movingCoord: { x: 0, y: 0 },
+    firstMove: true,
     activate: () => {
       return true;
     },
@@ -36,7 +37,7 @@ test("checking to make sure that it calls the correct functions the right number
     },
   };
 
-  checkSingleDirection("up", testPiece, board);
+  checkSingleDirection("up", testPiece, board, []);
   expect(setDxDy).toHaveBeenCalledTimes(1);
   expect(checkDirectionRecursively).toHaveBeenCalledTimes(1);
 });

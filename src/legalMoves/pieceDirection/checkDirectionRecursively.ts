@@ -1,30 +1,33 @@
-import { CoordDiff } from "../../types/legalMoveTypes";
+import { CoordDiff, LegalMove } from "../../types/legalMoveTypes";
 import { AN } from "../../types/boardTypes";
 import { Board } from "../../board/board_class";
 
 import whatsNextSquare from "./whatsNextSquare";
-import { legalDots } from "./legalDots";
-import hitsOwnPiece from "../generalRestrictions/hitsOwnPiece";
+
+import returnType from "./returnType";
 
 const checkDirectionRecursively = (
   coordDiff: CoordDiff,
   an: AN,
   board: Board,
-  range: number
+  range: number,
+  moveArray: LegalMove[]
 ) => {
   if (range === 0) return;
   const nextSquare = whatsNextSquare(coordDiff, an, board);
   //if we have come to the end of the direction
   if (!nextSquare) return;
-  //if its hits our own piece exit loop
-  if (hitsOwnPiece(nextSquare.an, board)) return;
 
-  //we run a function here that determins whats the nature of the move. This function checks whether the legal move is an attacking move aka hits an opponent
+  //we run a function here that determins whats the nature of the move. This function checks whether the legal move is an attacking move aka hits an opponent we can return null if its attacking forwrds, and null of only moving diag, push the return
+  const moveToPush = returnType(nextSquare, board);
+  if (!moveToPush) return;
 
   //if not then add that square to our legal moves
-  legalDots.push(nextSquare);
+  moveArray.push(moveToPush);
+  //if it hits another piece cease recursion
+  if (moveToPush.moveType === "attack") return console.log("attacking");
   range--;
-  checkDirectionRecursively(coordDiff, nextSquare.an, board, range);
+  checkDirectionRecursively(coordDiff, nextSquare.an, board, range, moveArray);
 };
 
 export default checkDirectionRecursively;
