@@ -17,6 +17,8 @@ const checkSingleDirection = (
 
   //we get our directional coordinate differences before running the recursive function to save on overhead as these wont change for the direction
   const coordDiff = setDxDy(direction, board);
+  coordDiff.pieceType = selectedPiece.type;
+
   checkDirectionRecursively(
     coordDiff,
     selectedPiece.an,

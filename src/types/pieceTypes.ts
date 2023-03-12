@@ -10,6 +10,7 @@ export type PieceType = {
   isActivated: boolean;
   movingCoord: Coord;
   firstMove: boolean;
+  inCheck: boolean;
   activate: () => boolean;
   deactivate: () => boolean;
   setMovingCoord: (mouseCoord: Coord) => Coord;

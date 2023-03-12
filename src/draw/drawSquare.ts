@@ -5,11 +5,14 @@ import { Coord } from "../types/boardTypes";
 //draw a square on the canvas
 const drawSquare = (square: Coord, squareColor: string) => {
   if (!ctx) return;
-
+  let color;
   const x = square.x - board.width / 16;
   const y = square.y - board.width / 16;
   const width = board.width / 8;
-  const color = squareColor === "white" ? "white" : "gray";
+
+  color = squareColor;
+  if (squareColor === "white") color = "white";
+  if (squareColor === "black") color = "gray";
 
   //draw our square
   ctx.beginPath();

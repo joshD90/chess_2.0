@@ -1,7 +1,7 @@
 import { Board } from "../../board/board_class";
-import { CoordDiff } from "../../types/legalMoveTypes";
+import { CoordDiffObj } from "../../types/legalMoveTypes";
 
-const setDxDy = (direction: string, board: Board): CoordDiff => {
+const setDxDy = (direction: string, board: Board): CoordDiffObj => {
   let unitX: number;
   let unitY: number;
 
@@ -84,7 +84,7 @@ const setDxDy = (direction: string, board: Board): CoordDiff => {
   const dx = unitX * squareWidth;
   const dy = unitY * squareWidth;
 
-  return { dx, dy };
+  return { coordDiff: { dx, dy }, direction: direction };
 };
 
 export default setDxDy;

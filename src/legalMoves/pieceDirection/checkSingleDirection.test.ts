@@ -26,6 +26,7 @@ test("checking to make sure that it calls the correct functions the right number
     image: image,
     movingCoord: { x: 0, y: 0 },
     firstMove: true,
+    inCheck: false,
     activate: () => {
       return true;
     },
