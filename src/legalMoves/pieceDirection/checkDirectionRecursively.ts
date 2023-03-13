@@ -1,6 +1,8 @@
 import { LegalMove, CoordDiffObj } from "../../types/legalMoveTypes";
 import { AN } from "../../types/boardTypes";
 import { Board } from "../../board/board_class";
+import whitePieces from "../../pieces/whitePieces";
+import blackPieces from "../../pieces/blackPieces";
 
 import whatsNextSquare from "./whatsNextSquare";
 
@@ -21,6 +23,7 @@ const checkDirectionRecursively = (
   //we run a function here that determins whats the nature of the move. This function checks whether the legal move is an attacking move aka hits an opponent we can return null if its attacking forwrds, and null of only moving diag, push the return
   const moveToPush = returnType(nextSquare, board, coordDiffObj);
   if (!moveToPush) return;
+  //if this particular move would put us into check then it can't be legal
 
   //if not then add that square to our legal moves
   moveArray.push(moveToPush);

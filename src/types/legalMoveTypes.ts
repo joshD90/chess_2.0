@@ -1,4 +1,4 @@
-import { GridSquare } from "./boardTypes";
+import { AN, GridSquare } from "./boardTypes";
 
 export type CoordDiff = {
   dx: number;

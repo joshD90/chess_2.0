@@ -29,23 +29,24 @@ const determineKingInCheck = (
 
 //can vary depending on which king we wish to see is in check
 const iteratePiecesForCheck = (
-  ourPieces: PieceType[],
-  opponentPieces: PieceType[],
+  defendingPieces: PieceType[],
+  attackingPieces: PieceType[],
   moveArray: LegalMove[],
   board: Board
 ): boolean => {
   //add all the legal moves for all of our opponents pieces
-  opponentPieces.forEach((piece) => {
+  attackingPieces.forEach((piece) => {
     checkAllDirections(piece, board, moveArray);
   });
-  const ourKing = ourPieces.find((piece) => piece.type === "king");
-  if (!ourKing) throw new Error("Could Not Find King");
+
+  const defendingKing = defendingPieces.find((piece) => piece.type === "king");
+  if (!defendingKing) throw new Error("Could Not Find King");
   //see are any of the legal moves falling on our kings square
   if (
     moveArray.some(
       (move) =>
-        move.square.an.col === ourKing.an.col &&
-        move.square.an.row === ourKing.an.row
+        move.square.an.col === defendingKing.an.col &&
+        move.square.an.row === defendingKing.an.row
     )
   )
     return true;

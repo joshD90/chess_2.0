@@ -36,6 +36,7 @@ const deactivatePiece = (e: MouseEvent) => {
   pieceToChange.firstMove = false;
 
   setCheck(board, whitePieces, blackPieces, opponentColor);
+  setCheck(board, whitePieces, blackPieces, board.color);
   if (landingType.moveType === "attack") {
     removePieceByAn(squareToDrop.an, opponentPieces);
   }

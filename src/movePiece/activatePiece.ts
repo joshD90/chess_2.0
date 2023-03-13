@@ -5,6 +5,7 @@ import blackPieces from "../pieces/blackPieces";
 import mouseRelCanvas from "../utils/mouseRelCanvas";
 import checkAllDirections from "../legalMoves/pieceDirection/checkAllDirections";
 import { legalDots } from "../legalMoves/pieceDirection/legalDots";
+import getLegalMoves from "../legalMoves/getLegalMoves";
 
 const activatePiece = (e: MouseEvent) => {
   // //we only want to be able to click our own pieces and move them
@@ -21,6 +22,7 @@ const activatePiece = (e: MouseEvent) => {
 
   //clear the legal moves array before performing new check
   legalDots.length = 0;
-  checkAllDirections(pieceSelected, board, legalDots);
+  //we want to have something that getLegalMoves(pieceSelected,board,legalDots, whitePieces,blackPieces) returns void but pushes onto the legal dots
+  getLegalMoves(pieceSelected, board, legalDots, whitePieces, blackPieces);
 };
 export default activatePiece;

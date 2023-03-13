@@ -1,5 +1,11 @@
 //pseudo-code
 
+import { Board } from "../board/board_class";
+import { LegalMove } from "../types/legalMoveTypes";
+import { PieceType } from "../types/pieceTypes";
+import removeSelfCheck from "./generalRestrictions/removeSelfCheck";
+import checkAllDirections from "./pieceDirection/checkAllDirections";
+
 //function to check all legalMoves
 //first check whether the king is in check - have an individual function for this
 //if the king is in check then we run all direction checks including taking checks. We then run a check on these possible moves and change the board to see whether this configuration will lead to a check - this will be using the above king check function, this means that for our directional checks we will need to pass the legal moves as a paramater as we will be pushing onto a different legal move array.
@@ -14,3 +20,24 @@
 
 //each legal square to move to must then include a type of legal move, "en-passante", "castle", "capture","move".
 //i wonder will we need to include the direction of castling, short or long castle as part of our type? will have to see once closer
+
+const getLegalMoves = (
+  selectedPiece: PieceType,
+  board: Board,
+  moveArray: LegalMove[],
+  whitePieces: PieceType[],
+  blackPieces: PieceType[]
+): void => {
+  //check all our directions and add the legal moves in those directions onto our move array
+  checkAllDirections(selectedPiece, board, moveArray);
+  //filter our any moves that would cause us to be in check
+  moveArray = removeSelfCheck(
+    moveArray,
+    blackPieces,
+    whitePieces,
+    board,
+    selectedPiece
+  );
+};
+
+export default getLegalMoves;
