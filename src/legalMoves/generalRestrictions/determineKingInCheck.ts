@@ -1,28 +1,27 @@
 import { Board } from "../../board/board_class";
-import { LegalMove } from "../../types/legalMoveTypes";
+import { HypotheticalPosition, LegalMove } from "../../types/legalMoveTypes";
 import { PieceType } from "../../types/pieceTypes";
 import checkAllDirections from "../pieceDirection/checkAllDirections";
 
 const determineKingInCheck = (
   board: Board,
-  whitePieces: PieceType[],
-  blackPieces: PieceType[],
+  position: HypotheticalPosition,
   kingColor: string
 ) => {
   const kingCheckArray: LegalMove[] = [];
   //set our white pieces on defense and black pieces attacking
   if (kingColor === "white") {
     return iteratePiecesForCheck(
-      whitePieces,
-      blackPieces,
+      position.white,
+      position.black,
       kingCheckArray,
       board
     );
   } else {
     //set our blackpieces on defense
     return iteratePiecesForCheck(
-      blackPieces,
-      whitePieces,
+      position.black,
+      position.white,
       kingCheckArray,
       board
     );
@@ -47,9 +46,10 @@ const iteratePiecesForCheck = (
     whitePieces = attackingPieces;
     blackPieces = defendingPieces;
   }
+  const position = { white: whitePieces, black: blackPieces };
   //add all the legal moves for all of the attackers pieces
   attackingPieces.forEach((piece) => {
-    checkAllDirections(piece, board, moveArray, whitePieces, blackPieces);
+    checkAllDirections(piece, board, moveArray, position);
   });
 
   const defendingKing = defendingPieces.find((piece) => piece.type === "king");

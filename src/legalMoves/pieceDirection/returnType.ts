@@ -1,6 +1,10 @@
 import { PieceImageIndex } from "../../assets/blackPieces/blackPiecesIndex";
 import { GridSquare } from "../../types/boardTypes";
-import { CoordDiffObj, LegalMove } from "../../types/legalMoveTypes";
+import {
+  CoordDiffObj,
+  HypotheticalPosition,
+  LegalMove,
+} from "../../types/legalMoveTypes";
 import { PieceType } from "../../types/pieceTypes";
 import hitsOpponentPiece from "../generalRestrictions/hitsOpponentPiece";
 import hitsOwnPiece from "../generalRestrictions/hitsOwnPiece";
@@ -9,12 +13,11 @@ const returnType = (
   nextSquare: GridSquare,
   coordDiffObj: CoordDiffObj,
   color: string,
-  whitePieces: PieceType[],
-  blackPieces: PieceType[]
+  position: HypotheticalPosition
 ): LegalMove | null => {
-  if (hitsOwnPiece(nextSquare.an, color, whitePieces, blackPieces)) return null;
+  if (hitsOwnPiece(nextSquare.an, color, position)) return null;
 
-  if (hitsOpponentPiece(nextSquare.an, color, whitePieces, blackPieces)) {
+  if (hitsOpponentPiece(nextSquare.an, color, position)) {
     //special dispensation for pawn movement
     if (
       coordDiffObj.pieceType === "pawn" &&

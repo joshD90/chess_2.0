@@ -4,15 +4,14 @@ import adjustRange from "./adjustRange";
 
 import { PieceType } from "../../types/pieceTypes";
 import { Board } from "../../board/board_class";
-import { LegalMove } from "../../types/legalMoveTypes";
+import { HypotheticalPosition, LegalMove } from "../../types/legalMoveTypes";
 
 const checkSingleDirection = (
   direction: string,
   selectedPiece: PieceType,
   board: Board,
   moveArray: LegalMove[],
-  whitePieces: PieceType[],
-  blackPieces: PieceType[]
+  position: HypotheticalPosition
 ) => {
   //adjust our range depending on first move / pawn move etc
   const range = adjustRange(selectedPiece, direction);
@@ -28,8 +27,7 @@ const checkSingleDirection = (
     range,
     moveArray,
     selectedPiece.color,
-    whitePieces,
-    blackPieces
+    position
   );
 };
 

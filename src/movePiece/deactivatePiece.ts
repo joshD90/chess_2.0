@@ -15,7 +15,6 @@ const deactivatePiece = (e: MouseEvent) => {
   const piecesToSearch = board.color === "white" ? whitePieces : blackPieces;
   const opponentPieces = board.color === "white" ? blackPieces : whitePieces;
 
-  const opponentColor = board.color === "white" ? "black" : "white";
   //find which piece is activated
   const pieceToChange = piecesToSearch.find(
     (piece) => piece.isActivated === true
@@ -39,9 +38,10 @@ const deactivatePiece = (e: MouseEvent) => {
   if (landingType.moveType === "attack") {
     removePieceByAn(squareToDrop.an, opponentPieces);
   }
+  const position = { white: whitePieces, black: blackPieces };
   //do our move operators, move this into a seperate function.
-  setCheck(board, whitePieces, blackPieces, "white");
-  setCheck(board, whitePieces, blackPieces, "black");
+  setCheck(board, position, "white");
+  setCheck(board, position, "black");
   //switch over our board
   board.color = board.color === "white" ? "black" : "white";
   // board.resizeBoard(canvas);

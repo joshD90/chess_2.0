@@ -1,4 +1,8 @@
-import { LegalMove, CoordDiffObj } from "../../types/legalMoveTypes";
+import {
+  LegalMove,
+  CoordDiffObj,
+  HypotheticalPosition,
+} from "../../types/legalMoveTypes";
 import { AN } from "../../types/boardTypes";
 import { Board } from "../../board/board_class";
 
@@ -14,8 +18,7 @@ const checkDirectionRecursively = (
   range: number,
   moveArray: LegalMove[],
   color: string,
-  whitePieces: PieceType[],
-  blackPieces: PieceType[]
+  position: HypotheticalPosition
 ) => {
   if (range === 0) return;
   const nextSquare = whatsNextSquare(coordDiffObj.coordDiff, an, board);
@@ -23,13 +26,7 @@ const checkDirectionRecursively = (
   if (!nextSquare) return;
 
   //we run a function here that determins whats the nature of the move. This function checks whether the legal move is an attacking move aka hits an opponent we can return null if its attacking forwrds, and null of only moving diag, push the return
-  const moveToPush = returnType(
-    nextSquare,
-    coordDiffObj,
-    color,
-    whitePieces,
-    blackPieces
-  );
+  const moveToPush = returnType(nextSquare, coordDiffObj, color, position);
   if (!moveToPush) return;
   //if this particular move would put us into check then it can't be legal
 
@@ -45,8 +42,7 @@ const checkDirectionRecursively = (
     range,
     moveArray,
     color,
-    whitePieces,
-    blackPieces
+    position
   );
 };
 

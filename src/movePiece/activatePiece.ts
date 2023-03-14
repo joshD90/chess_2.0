@@ -24,7 +24,7 @@ const activatePiece = (e: MouseEvent) => {
   //clear the legal moves array before performing new check
   legalDots.length = 0;
   //we want to have something that getLegalMoves(pieceSelected,board,legalDots, whitePieces,blackPieces) returns void but pushes onto the legal dots
-  getLegalMoves(pieceSelected, board, legalDots, whitePieces, blackPieces);
-  console.log(legalDots);
+  const position = { white: whitePieces, black: blackPieces };
+  getLegalMoves(pieceSelected, board, legalDots, position);
 };
 export default activatePiece;

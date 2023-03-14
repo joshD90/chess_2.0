@@ -23,12 +23,7 @@ const determineMovePutsUsIntoCheck = (
     otherPieces
   );
 
-  return determineKingInCheck(
-    board,
-    newPosition.white,
-    newPosition.black,
-    color
-  );
+  return determineKingInCheck(board, newPosition, color);
 };
 
 export default determineMovePutsUsIntoCheck;

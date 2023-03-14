@@ -1,7 +1,7 @@
 //pseudo-code
 
 import { Board } from "../board/board_class";
-import { LegalMove } from "../types/legalMoveTypes";
+import { HypotheticalPosition, LegalMove } from "../types/legalMoveTypes";
 import { PieceType } from "../types/pieceTypes";
 import removeSelfCheck from "./generalRestrictions/removeSelfCheck";
 import checkAllDirections from "./pieceDirection/checkAllDirections";
@@ -25,13 +25,18 @@ const getLegalMoves = (
   selectedPiece: PieceType,
   board: Board,
   moveArray: LegalMove[],
-  whitePieces: PieceType[],
-  blackPieces: PieceType[]
+  position: HypotheticalPosition
 ): void => {
   //check all our directions and add the legal moves in those directions onto our move array
-  checkAllDirections(selectedPiece, board, moveArray, whitePieces, blackPieces);
+  checkAllDirections(selectedPiece, board, moveArray, position);
   //filter our any moves that would cause us to be in check
-  removeSelfCheck(moveArray, blackPieces, whitePieces, board, selectedPiece);
+  removeSelfCheck(
+    moveArray,
+    position.black,
+    position.white,
+    board,
+    selectedPiece
+  );
 };
 
 export default getLegalMoves;

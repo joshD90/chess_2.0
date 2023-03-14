@@ -40,7 +40,9 @@ test("checking to make sure that it calls the correct functions the right number
     },
   };
 
-  checkSingleDirection("up", testPiece, board, [], whitePieces, blackPieces);
+  const position = { white: whitePieces, black: blackPieces };
+
+  checkSingleDirection("up", testPiece, board, [], position);
   expect(setDxDy).toHaveBeenCalledTimes(1);
   expect(checkDirectionRecursively).toHaveBeenCalledTimes(1);
 });
