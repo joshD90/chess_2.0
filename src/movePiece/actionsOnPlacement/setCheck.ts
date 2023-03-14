@@ -8,7 +8,7 @@ const setCheck = (
   blackPieces: PieceType[],
   kingColor: string
 ) => {
-  //see wehether the king is in check
+  //see whether the king is in check
   const isInCheck = determineKingInCheck(
     board,
     whitePieces,

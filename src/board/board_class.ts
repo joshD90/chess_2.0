@@ -28,9 +28,9 @@ export class Board {
     return this.grid;
   }
   resizeBoard(canvas: HTMLCanvasElement) {
-    this.width = canvas.width;
-    this.squareWidth = this.width / 8;
-    this.updateSquarePos();
+    // this.width = canvas.width;
+    // this.squareWidth = this.width / 8;
+    // this.updateSquarePos();
   }
 }
 

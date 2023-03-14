@@ -14,23 +14,21 @@ const determineMovePutsUsIntoCheck = (
   const { color } = selectedPiece;
 
   const piecesToChange = color === "white" ? whitePieces : blackPieces;
+  const otherPieces = color === "white" ? blackPieces : whitePieces;
 
   const newPosition = createHypotheticalPosition(
     selectedPiece,
     move.square.an,
-    piecesToChange
-  );
-  console.log(
-    determineKingInCheck(board, newPosition, blackPieces, "black"),
-    "determin king in check return"
+    piecesToChange,
+    otherPieces
   );
 
-  //we need to switch the position around depending on which pieces we have adjusted
-  if (color === "white") {
-    return determineKingInCheck(board, newPosition, blackPieces, color);
-  } else {
-    return determineKingInCheck(board, whitePieces, newPosition, color);
-  }
+  return determineKingInCheck(
+    board,
+    newPosition.white,
+    newPosition.black,
+    color
+  );
 };
 
 export default determineMovePutsUsIntoCheck;

@@ -21,7 +21,8 @@ const removeSelfCheck = (
         board
       )
   );
-  return filteredMoves;
+  //mutate our legal moves to the filtered version
+  legalMoves.splice(0, legalMoves.length, ...filteredMoves);
 };
 
 export default removeSelfCheck;

@@ -10,7 +10,9 @@ const checkSingleDirection = (
   direction: string,
   selectedPiece: PieceType,
   board: Board,
-  moveArray: LegalMove[]
+  moveArray: LegalMove[],
+  whitePieces: PieceType[],
+  blackPieces: PieceType[]
 ) => {
   //adjust our range depending on first move / pawn move etc
   const range = adjustRange(selectedPiece, direction);
@@ -24,7 +26,10 @@ const checkSingleDirection = (
     selectedPiece.an,
     board,
     range,
-    moveArray
+    moveArray,
+    selectedPiece.color,
+    whitePieces,
+    blackPieces
   );
 };
 

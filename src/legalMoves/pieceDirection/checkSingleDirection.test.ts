@@ -3,6 +3,8 @@ import setDxDy from "./setDxDy";
 import checkDirectionRecursively from "./checkDirectionRecursively";
 import { board } from "../../board/board_class";
 import { PieceType } from "../../types/pieceTypes";
+import blackPieces from "../../pieces/blackPieces";
+import whitePieces from "../../pieces/whitePieces";
 
 jest.mock("./setDxDy", () => ({
   setDxDy: jest.fn(),
@@ -38,7 +40,7 @@ test("checking to make sure that it calls the correct functions the right number
     },
   };
 
-  checkSingleDirection("up", testPiece, board, []);
+  checkSingleDirection("up", testPiece, board, [], whitePieces, blackPieces);
   expect(setDxDy).toHaveBeenCalledTimes(1);
   expect(checkDirectionRecursively).toHaveBeenCalledTimes(1);
 });

@@ -10,6 +10,7 @@ const determineKingInCheck = (
   kingColor: string
 ) => {
   const kingCheckArray: LegalMove[] = [];
+  //set our white pieces on defense and black pieces attacking
   if (kingColor === "white") {
     return iteratePiecesForCheck(
       whitePieces,
@@ -18,6 +19,7 @@ const determineKingInCheck = (
       board
     );
   } else {
+    //set our blackpieces on defense
     return iteratePiecesForCheck(
       blackPieces,
       whitePieces,
@@ -34,13 +36,25 @@ const iteratePiecesForCheck = (
   moveArray: LegalMove[],
   board: Board
 ): boolean => {
-  //add all the legal moves for all of our opponents pieces
+  //we need to be able to pass our hypothetical pieces down through the check all directions function
+
+  let whitePieces: PieceType[];
+  let blackPieces: PieceType[];
+  if (defendingPieces.find((piece) => piece.color === "white")) {
+    whitePieces = defendingPieces;
+    blackPieces = attackingPieces;
+  } else {
+    whitePieces = attackingPieces;
+    blackPieces = defendingPieces;
+  }
+  //add all the legal moves for all of the attackers pieces
   attackingPieces.forEach((piece) => {
-    checkAllDirections(piece, board, moveArray);
+    checkAllDirections(piece, board, moveArray, whitePieces, blackPieces);
   });
 
   const defendingKing = defendingPieces.find((piece) => piece.type === "king");
   if (!defendingKing) throw new Error("Could Not Find King");
+
   //see are any of the legal moves falling on our kings square
   if (
     moveArray.some(

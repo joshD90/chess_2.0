@@ -1,4 +1,5 @@
 import { AN, GridSquare } from "./boardTypes";
+import { PieceType } from "./pieceTypes";
 
 export type CoordDiff = {
   dx: number;
@@ -21,4 +22,9 @@ export type LegalMove = {
 export type ShouldDrop = {
   should: boolean;
   moveType: MoveType;
+};
+
+export type HypotheticalPosition = {
+  white: PieceType[];
+  black: PieceType[];
 };

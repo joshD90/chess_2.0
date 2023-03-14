@@ -9,6 +9,7 @@ import { legalDots } from "../legalMoves/pieceDirection/legalDots";
 
 import setCheck from "./actionsOnPlacement/setCheck";
 import removePieceByAn from "./actionsOnPlacement/removePieceByAn";
+import { canvas } from "../board/canvasContext";
 
 const deactivatePiece = (e: MouseEvent) => {
   const piecesToSearch = board.color === "white" ? whitePieces : blackPieces;
@@ -35,13 +36,21 @@ const deactivatePiece = (e: MouseEvent) => {
   pieceToChange.an = squareToDrop?.an;
   pieceToChange.firstMove = false;
 
-  setCheck(board, whitePieces, blackPieces, opponentColor);
-  setCheck(board, whitePieces, blackPieces, board.color);
   if (landingType.moveType === "attack") {
     removePieceByAn(squareToDrop.an, opponentPieces);
   }
-
+  //do our move operators, move this into a seperate function.
+  setCheck(board, whitePieces, blackPieces, "white");
+  setCheck(board, whitePieces, blackPieces, "black");
+  //switch over our board
   board.color = board.color === "white" ? "black" : "white";
+  // board.resizeBoard(canvas);
+  // blackPieces.forEach(
+  //   (piece) => (piece.moveDirections = piece.setMoveDirections())
+  // );
+  // whitePieces.forEach(
+  //   (piece) => (piece.moveDirections = piece.setMoveDirections())
+  // );
 };
 
 export default deactivatePiece;

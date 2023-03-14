@@ -29,15 +29,9 @@ const getLegalMoves = (
   blackPieces: PieceType[]
 ): void => {
   //check all our directions and add the legal moves in those directions onto our move array
-  checkAllDirections(selectedPiece, board, moveArray);
+  checkAllDirections(selectedPiece, board, moveArray, whitePieces, blackPieces);
   //filter our any moves that would cause us to be in check
-  moveArray = removeSelfCheck(
-    moveArray,
-    blackPieces,
-    whitePieces,
-    board,
-    selectedPiece
-  );
+  removeSelfCheck(moveArray, blackPieces, whitePieces, board, selectedPiece);
 };
 
 export default getLegalMoves;
