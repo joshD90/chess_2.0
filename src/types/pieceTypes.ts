@@ -14,4 +14,5 @@ export type PieceType = {
   activate: () => boolean;
   deactivate: () => boolean;
   setMovingCoord: (mouseCoord: Coord) => Coord;
+  setMoveDirections: () => any;
 };

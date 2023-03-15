@@ -38,6 +38,7 @@ test("checking to make sure that it calls the correct functions the right number
     setMovingCoord: () => {
       return { x: 0, y: 0 };
     },
+    setMoveDirections: () => {},
   };
 
   const position = { white: whitePieces, black: blackPieces };
