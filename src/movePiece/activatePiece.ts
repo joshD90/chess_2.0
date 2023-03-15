@@ -3,10 +3,9 @@ import checkPieceSelected from "./checkPieceSelected";
 import whitePieces from "../pieces/whitePieces";
 import blackPieces from "../pieces/blackPieces";
 import mouseRelCanvas from "../utils/mouseRelCanvas";
-import checkAllDirections from "../legalMoves/pieceDirection/checkAllDirections";
+
 import { legalDots } from "../legalMoves/pieceDirection/legalDots";
 import getLegalMoves from "../legalMoves/getLegalMoves";
-import { LegalMove } from "../types/legalMoveTypes";
 
 const activatePiece = (e: MouseEvent) => {
   // //we only want to be able to click our own pieces and move them

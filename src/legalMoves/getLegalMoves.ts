@@ -5,6 +5,7 @@ import { HypotheticalPosition, LegalMove } from "../types/legalMoveTypes";
 import { PieceType } from "../types/pieceTypes";
 import removeSelfCheck from "./generalRestrictions/removeSelfCheck";
 import checkAllDirections from "./pieceDirection/checkAllDirections";
+import addCastleSquares from "./specialMoves/addCastleSquares";
 
 //function to check all legalMoves
 //first check whether the king is in check - have an individual function for this
@@ -36,6 +37,13 @@ const getLegalMoves = (
     position.white,
     board,
     selectedPiece
+  );
+  //add in our legal castling squares
+  addCastleSquares(
+    position,
+    selectedPiece.color as "white" | "black",
+    board,
+    moveArray
   );
 };
 

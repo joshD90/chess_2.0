@@ -11,10 +11,10 @@ import setCheck from "./actionsOnPlacement/setCheck";
 import removePieceByAn from "./actionsOnPlacement/removePieceByAn";
 import { canvas } from "../board/canvasContext";
 import flipBoard from "./actionsOnPlacement/flipBoard";
+import doDrop from "./doDrop";
 
 const deactivatePiece = (e: MouseEvent) => {
   const piecesToSearch = board.color === "white" ? whitePieces : blackPieces;
-  const opponentPieces = board.color === "white" ? blackPieces : whitePieces;
 
   //find which piece is activated
   const pieceToChange = piecesToSearch.find(
@@ -27,24 +27,9 @@ const deactivatePiece = (e: MouseEvent) => {
 
   if (!squareToDrop) return pieceToChange.deactivate();
 
-  //see what sort of legal move we are landing on and determine what we need to do
-  const landingType = checkLandingOnLegalSquare(squareToDrop, legalDots);
-
-  if (!landingType) return pieceToChange.deactivate();
-  //update our pieces new AN and Deactivate
-  pieceToChange.deactivate();
-  pieceToChange.an = squareToDrop?.an;
-  pieceToChange.firstMove = false;
-
-  if (landingType.moveType === "attack") {
-    removePieceByAn(squareToDrop.an, opponentPieces);
-  }
   const position = { white: whitePieces, black: blackPieces };
-  //do our move operators, move this into a seperate function.
-  setCheck(board, position, "white");
-  setCheck(board, position, "black");
-  //flip the board
-  flipBoard(board, canvas, position);
+  //once we have identified our piece and our square we can do the drop logic
+  doDrop(squareToDrop, position, pieceToChange, board, canvas);
 };
 
 export default deactivatePiece;
