@@ -10,6 +10,7 @@ export class Board {
   grid: GridSquare[] = [];
   color: string;
   shouldFlip: boolean;
+  queeningSelection: boolean;
 
   constructor(canvas: HTMLCanvasElement, color: string) {
     this.canvas = canvas;
@@ -17,6 +18,7 @@ export class Board {
     this.squareWidth = this.width / 8;
     this.color = color;
     this.shouldFlip = true;
+    this.queeningSelection = false;
   }
 
   makeGrid() {

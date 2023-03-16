@@ -9,6 +9,9 @@ import setCheck from "./actionsOnPlacement/setCheck";
 import checkLandingOnLegalSquare from "./checkLandingOnLegalSquare";
 import { legalDots } from "../legalMoves/pieceDirection/legalDots";
 import setCastle from "./actionsOnPlacement/setCastle";
+import promotePawn from "./actionsOnPlacement/promotePawn";
+import checkPawnQueening from "./actionsOnPlacement/checkPawnQueening";
+import setPawnQueening from "./actionsOnPlacement/setPawnQueening";
 
 const doDrop = (
   squareToDrop: GridSquare,
@@ -38,6 +41,15 @@ const doDrop = (
   }
   if (landingType.moveType === "castle")
     setCastle(position, pieceToChange, squareToDrop);
+  //if the pawn is queening exit this function before passing over the turn and once we do our queening then carry on
+  if (checkPawnQueening(pieceToChange, squareToDrop))
+    return setPawnQueening(
+      pieceToChange,
+      board,
+      squareToDrop,
+      landingType,
+      opponentPieces
+    );
 
   legalDots.length = 0;
 

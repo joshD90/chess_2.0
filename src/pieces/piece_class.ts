@@ -15,6 +15,7 @@ export class Piece {
   movingCoord: Coord;
   firstMove: boolean;
   inCheck: boolean;
+  isQueening: boolean;
 
   constructor(color: string, an: AN, type: string) {
     this.color = color;
@@ -27,7 +28,9 @@ export class Piece {
     this.movingCoord = { x: 0, y: 0 };
     this.firstMove = true;
     this.inCheck = false;
+    this.isQueening = false;
   }
+
   //these are used in making the rest of our piece properties from existing data
   setMoveDirections() {
     return createMoveDirections(this.type, board, this.color);

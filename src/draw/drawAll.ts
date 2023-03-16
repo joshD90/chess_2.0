@@ -8,6 +8,7 @@ import drawMovingPiece from "./drawMovingPiece";
 import drawLegalDots from "./drawLegalDots";
 import { legalDots } from "../legalMoves/pieceDirection/legalDots";
 import drawCheck from "./drawCheck";
+import drawQueeningSelection from "./drawQueeningSelection";
 
 const drawAll = (board: Board) => {
   drawAllSquares(board.grid);
@@ -17,6 +18,7 @@ const drawAll = (board: Board) => {
   drawAllPieces(whitePieces);
   drawMovingPiece();
   drawLegalDots(legalDots);
+  drawQueeningSelection();
 };
 
 export default drawAll;

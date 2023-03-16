@@ -1,5 +1,6 @@
 import { Board } from "../board/board_class";
 import { ctx } from "../board/canvasContext";
+import { PieceOffBoard } from "../pieces/pieceOffBoard_class";
 import { Coord } from "../types/boardTypes";
 import { PieceType } from "../types/pieceTypes";
 import anToCoord from "../utils/anToCoord";
@@ -10,17 +11,17 @@ export const drawPiece = (piece: PieceType, board: Board) => {
   const pieceCoord = anToCoord(piece.an, board);
   const squareWidth = board.width / 8;
 
-  drawPieceByCoord({ x: pieceCoord.x, y: pieceCoord.y }, board, piece);
+  drawPieceByCoord({ x: pieceCoord.x, y: pieceCoord.y }, squareWidth, piece);
 };
 //draws the piece by coordinate - full piece cannot be plugged in
 export const drawPieceByCoord = (
   coord: Coord,
-  board: Board,
-  piece: PieceType
+  squareWidth: number,
+  piece: PieceType | PieceOffBoard
 ) => {
   if (!ctx) return;
   //set our parameters
-  const squareWidth = board.width / 8;
+
   const img = piece.image;
   //we need to adjust our x and y values so that the center of the picture is drawn on the central coord
 

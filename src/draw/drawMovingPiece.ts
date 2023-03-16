@@ -16,7 +16,7 @@ const drawMovingPiece = () => {
   //we need to adjust the piece so that the center is drawn on the mouse
 
   //draw that piece
-  drawPieceByCoord(pieceToDraw.movingCoord, board, pieceToDraw);
+  drawPieceByCoord(pieceToDraw.movingCoord, board.width / 8, pieceToDraw);
 };
 
 export default drawMovingPiece;

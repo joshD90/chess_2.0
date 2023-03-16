@@ -29,6 +29,7 @@ test("checking to make sure that it calls the correct functions the right number
     movingCoord: { x: 0, y: 0 },
     firstMove: true,
     inCheck: false,
+    isQueening: false,
     activate: () => {
       return true;
     },

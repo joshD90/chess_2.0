@@ -3,6 +3,7 @@ import activatePiece from "../movePiece/activatePiece";
 import setMovingPieceCoord from "../movePiece/setMovingPieceCoord";
 import deactivatePiece from "../movePiece/deactivatePiece";
 import setBoardShouldFlip from "./setBoardShouldFlip";
+import selectPromotion from "./queeningSelection/selectPromotion";
 
 const canvas = document.getElementById("canvas") as HTMLCanvasElement;
 const flipToggle = document.querySelector(".checkbox") as HTMLInputElement;
@@ -13,6 +14,7 @@ const addListeners = () => {
   window.addEventListener("resize", resizeBoard);
   canvas.addEventListener("mousedown", activatePiece);
   canvas.addEventListener("mouseup", deactivatePiece);
+  canvas.addEventListener("mousedown", selectPromotion);
   canvas.addEventListener("mousemove", setMovingPieceCoord);
   flipToggle.addEventListener("change", setBoardShouldFlip);
 };

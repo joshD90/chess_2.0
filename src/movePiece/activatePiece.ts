@@ -8,6 +8,7 @@ import { legalDots } from "../legalMoves/pieceDirection/legalDots";
 import getLegalMoves from "../legalMoves/getLegalMoves";
 
 const activatePiece = (e: MouseEvent) => {
+  if (board.queeningSelection) return;
   // //we only want to be able to click our own pieces and move them
   const playerPieces = board.color === "white" ? whitePieces : blackPieces;
 
