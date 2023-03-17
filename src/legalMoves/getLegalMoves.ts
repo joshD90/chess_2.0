@@ -6,6 +6,7 @@ import { PieceType } from "../types/pieceTypes";
 import removeSelfCheck from "./generalRestrictions/removeSelfCheck";
 import checkAllDirections from "./pieceDirection/checkAllDirections";
 import addCastleSquares from "./specialMoves/addCastleSquares";
+import addEnPassante from "./specialMoves/addEnPassante";
 
 //function to check all legalMoves
 //first check whether the king is in check - have an individual function for this
@@ -45,6 +46,9 @@ const getLegalMoves = (
     board,
     moveArray
   );
+  addEnPassante(selectedPiece, position, moveArray, board);
+
+  // See we need a doEnpassante as well as a set enpassante. the doEnppasante will remove this piece
 };
 
 export default getLegalMoves;

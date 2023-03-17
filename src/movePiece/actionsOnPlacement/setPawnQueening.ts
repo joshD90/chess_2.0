@@ -3,6 +3,7 @@ import { GridSquare } from "../../types/boardTypes";
 import { ShouldDrop } from "../../types/legalMoveTypes";
 import { PieceType } from "../../types/pieceTypes";
 import removePieceByAn from "./removePieceByAn";
+import { queeningSelection } from "../../board/queeningSelection/queeningSelection_Class";
 
 const setPawnQueening = (
   pieceToChange: PieceType,
@@ -20,6 +21,7 @@ const setPawnQueening = (
   pieceToChange.an.row = squareToDrop.an.row;
   //update our board into its queening status
   board.queeningSelection = true;
+  queeningSelection.changePieceArrayColors();
 };
 
 export default setPawnQueening;

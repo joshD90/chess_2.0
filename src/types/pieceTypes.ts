@@ -12,6 +12,7 @@ export type PieceType = {
   firstMove: boolean;
   inCheck: boolean;
   isQueening: boolean;
+  isEnPassante: boolean;
   activate: () => boolean;
   deactivate: () => boolean;
   setMovingCoord: (mouseCoord: Coord) => Coord;

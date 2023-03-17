@@ -16,6 +16,7 @@ export class Piece {
   firstMove: boolean;
   inCheck: boolean;
   isQueening: boolean;
+  isEnPassante: boolean;
 
   constructor(color: string, an: AN, type: string) {
     this.color = color;
@@ -29,6 +30,7 @@ export class Piece {
     this.firstMove = true;
     this.inCheck = false;
     this.isQueening = false;
+    this.isEnPassante = false;
   }
 
   //these are used in making the rest of our piece properties from existing data

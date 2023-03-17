@@ -30,6 +30,7 @@ test("checking to make sure that it calls the correct functions the right number
     firstMove: true,
     inCheck: false,
     isQueening: false,
+    isEnPassante: false,
     activate: () => {
       return true;
     },
