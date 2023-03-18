@@ -4,6 +4,7 @@ import { PieceOffBoard } from "../../pieces/pieceOffBoard_class";
 import { Piece } from "../../pieces/piece_class";
 import { HypotheticalPosition } from "../../types/legalMoveTypes";
 import { PieceType } from "../../types/pieceTypes";
+import determineCheckmate from "./determineNoLegalMoves";
 import flipBoard from "./flipBoard";
 import setCheck from "./setCheck";
 
@@ -34,7 +35,7 @@ const promotePawn = (
 
   //see whether this promotion has caused check
   const opponentColor = promotedPiece.color === "white" ? "black" : "white";
-
+  if (determineCheckmate(position, opponentColor, board)) alert("Checkmate");
   setCheck(board, position, opponentColor);
   //do our turn
   flipBoard(board, canvas, position);

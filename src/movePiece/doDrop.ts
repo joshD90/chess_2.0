@@ -9,12 +9,14 @@ import setCheck from "./actionsOnPlacement/setCheck";
 import checkLandingOnLegalSquare from "./checkLandingOnLegalSquare";
 import { legalDots } from "../legalMoves/pieceDirection/legalDots";
 import setCastle from "./actionsOnPlacement/setCastle";
-import promotePawn from "./actionsOnPlacement/promotePawn";
+
 import checkPawnQueening from "./actionsOnPlacement/checkPawnQueening";
 import setPawnQueening from "./actionsOnPlacement/setPawnQueening";
 import setEnPassante from "./actionsOnPlacement/setEnPassant";
 import takeEnPassante from "./actionsOnPlacement/takeEnPassante";
 import deactivateEnPassante from "./actionsOnPlacement/deactivateEnPassante";
+import determineCheckmate from "./actionsOnPlacement/determineNoLegalMoves";
+import determineStalemate from "./actionsOnPlacement/determineStalemate";
 
 const doDrop = (
   squareToDrop: GridSquare,
@@ -57,6 +59,22 @@ const doDrop = (
       landingType,
       opponentPieces
     );
+  if (
+    determineCheckmate(
+      position,
+      opponentPieces[0].color as "white" | "black",
+      board
+    )
+  )
+    return alert("You Have Won By Checkmate");
+  if (
+    determineStalemate(
+      position,
+      opponentPieces[0].color as "white" | "black",
+      board
+    )
+  )
+    return alert("It's a draw by stalemate");
 
   legalDots.length = 0;
   //make sure that when the turn passes back over we  have a clean slate
