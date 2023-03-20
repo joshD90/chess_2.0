@@ -6,6 +6,7 @@ import mouseRelCanvas from "../utils/mouseRelCanvas";
 
 import { legalDots } from "../legalMoves/pieceDirection/legalDots";
 import getLegalMoves from "../legalMoves/getLegalMoves";
+import determineColorSquareByAN from "../utils/determineColorSquareByAN";
 
 const activatePiece = (e: MouseEvent) => {
   if (board.queeningSelection) return;
@@ -16,7 +17,7 @@ const activatePiece = (e: MouseEvent) => {
   //should return our piece, if not then it should return null
   const pieceSelected = checkPieceSelected(playerPieces, mousePos);
   if (!pieceSelected) return;
-
+  console.log(determineColorSquareByAN(pieceSelected.an));
   //activate a piece that it is over
   pieceSelected.activate();
   pieceSelected.movingCoord = mousePos;

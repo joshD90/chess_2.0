@@ -18,14 +18,14 @@ const rook1 = new Piece("white", { col: "a", row: 0 }, "rook");
 const rook2 = new Piece("white", { col: "h", row: 0 }, "rook");
 
 const whitePieces = [
-  pawn1,
-  pawn2,
-  pawn3,
-  pawn4,
-  pawn5,
-  pawn6,
-  pawn7,
-  pawn8,
+  // pawn1,
+  // pawn2,
+  // pawn3,
+  // pawn4,
+  // pawn5,
+  // pawn6,
+  // pawn7,
+  // pawn8,
   queen,
   king,
   bishop1,

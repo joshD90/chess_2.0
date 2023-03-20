@@ -19,6 +19,7 @@ import deactivateEnPassante from "./actionsOnPlacement/deactivateEnPassante";
 import determineStalemate from "./actionsOnPlacement/determineStalemate";
 
 import determineCheckmate from "./actionsOnPlacement/determineCheckmate";
+import determineDrawByInsufficientMaterial from "./actionsOnPlacement/determineDrawByInsufficientMaterial";
 
 const doDrop = (
   squareToDrop: GridSquare,
@@ -37,7 +38,7 @@ const doDrop = (
     pieceToChange.deactivate();
     return;
   }
-
+  //if we are landing on a legal square drop the piece and give it a new position
   //update our pieces new AN and Deactivate
   pieceToChange.deactivate();
   pieceToChange.an = squareToDrop?.an;
@@ -46,13 +47,11 @@ const doDrop = (
   //then set first move as false
   pieceToChange.firstMove = false;
 
-  if (landingType.moveType === "attack") {
-    console.log(squareToDrop.an);
-    console.log(opponentPieces);
+  if (landingType.moveType === "attack")
     removePieceByAn(squareToDrop.an, opponentPieces);
-  }
 
   if (landingType.moveType === "enPassante") takeEnPassante(opponentPieces);
+
   if (landingType.moveType === "castle")
     setCastle(position, pieceToChange, squareToDrop);
   //if the pawn is queening exit this function before passing over the turn and once we do our queening then carry on
@@ -84,6 +83,9 @@ const doDrop = (
     )
   )
     return alert("It's a draw by stalemate");
+
+  if (determineDrawByInsufficientMaterial(position))
+    return alert("it's a draw by insufficient material");
 
   legalDots.length = 0;
   //make sure that when the turn passes back over we  have a clean slate
