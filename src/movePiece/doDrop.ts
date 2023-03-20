@@ -15,8 +15,10 @@ import setPawnQueening from "./actionsOnPlacement/setPawnQueening";
 import setEnPassante from "./actionsOnPlacement/setEnPassant";
 import takeEnPassante from "./actionsOnPlacement/takeEnPassante";
 import deactivateEnPassante from "./actionsOnPlacement/deactivateEnPassante";
-import determineCheckmate from "./actionsOnPlacement/determineNoLegalMoves";
+
 import determineStalemate from "./actionsOnPlacement/determineStalemate";
+
+import determineCheckmate from "./actionsOnPlacement/determineCheckmate";
 
 const doDrop = (
   squareToDrop: GridSquare,
@@ -45,8 +47,11 @@ const doDrop = (
   pieceToChange.firstMove = false;
 
   if (landingType.moveType === "attack") {
+    console.log(squareToDrop.an);
+    console.log(opponentPieces);
     removePieceByAn(squareToDrop.an, opponentPieces);
   }
+
   if (landingType.moveType === "enPassante") takeEnPassante(opponentPieces);
   if (landingType.moveType === "castle")
     setCastle(position, pieceToChange, squareToDrop);
@@ -59,6 +64,10 @@ const doDrop = (
       landingType,
       opponentPieces
     );
+
+  //do our move operators, move this into a seperate function.
+  setCheck(board, position, "white");
+  setCheck(board, position, "black");
   if (
     determineCheckmate(
       position,
@@ -79,9 +88,7 @@ const doDrop = (
   legalDots.length = 0;
   //make sure that when the turn passes back over we  have a clean slate
   deactivateEnPassante(opponentPieces);
-  //do our move operators, move this into a seperate function.
-  setCheck(board, position, "white");
-  setCheck(board, position, "black");
+
   //flip the board
   flipBoard(board, canvas, position);
 };
