@@ -1,6 +1,7 @@
 import setQueeningCoords from "../board/queeningSelection/setQueeningCoords";
 import { Coord } from "../types/boardTypes";
 import { creatingImage } from "./creatingImage";
+import setPieceValue from "./setPieceValue";
 
 export class PieceOffBoard {
   color: "white" | "black";
@@ -9,6 +10,7 @@ export class PieceOffBoard {
   position: number;
   coord: Coord;
   numberOf?: number;
+  value: number;
 
   constructor(
     color: "white" | "black",
@@ -22,6 +24,7 @@ export class PieceOffBoard {
     this.numberOf = numberOf;
     this.image = this.setImage();
     this.coord = this.setCoord();
+    this.value = this.setValue();
   }
 
   setImage() {
@@ -29,5 +32,8 @@ export class PieceOffBoard {
   }
   setCoord() {
     return setQueeningCoords(this.position);
+  }
+  setValue() {
+    return setPieceValue(this.type);
   }
 }

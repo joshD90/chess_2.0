@@ -17,7 +17,7 @@ const activatePiece = (e: MouseEvent) => {
   //should return our piece, if not then it should return null
   const pieceSelected = checkPieceSelected(playerPieces, mousePos);
   if (!pieceSelected) return;
-  console.log(determineColorSquareByAN(pieceSelected.an));
+
   //activate a piece that it is over
   pieceSelected.activate();
   pieceSelected.movingCoord = mousePos;

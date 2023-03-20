@@ -9,6 +9,13 @@ import drawLegalDots from "./drawLegalDots";
 import { legalDots } from "../legalMoves/pieceDirection/legalDots";
 import drawCheck from "./drawCheck";
 import drawQueeningSelection from "./drawQueeningSelection";
+import drawSquareOffBoard from "./drawSquareOffBoard";
+import drawTakenPieces from "./drawTakenPieces";
+import opponentPiecesTakenCtx from "../board/sideCanvas/opponentPiecesTakenContext";
+import {
+  blackPiecesTaken,
+  whitePiecesTaken,
+} from "../board/sideCanvas/piecesTaken_class";
 
 const drawAll = (board: Board) => {
   drawAllSquares(board.grid);
@@ -19,6 +26,8 @@ const drawAll = (board: Board) => {
   drawMovingPiece();
   drawLegalDots(legalDots);
   drawQueeningSelection();
+  whitePiecesTaken.drawPieces();
+  blackPiecesTaken.drawPieces();
 };
 
 export default drawAll;

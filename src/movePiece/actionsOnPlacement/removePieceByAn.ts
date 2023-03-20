@@ -8,6 +8,7 @@ const removePieceByAn = (an: AN, piecesToChange: PieceType[]): void => {
   );
 
   if (!pieceOnAN) return;
+
   const indexOfPiece = piecesToChange.indexOf(pieceOnAN);
 
   //remove that piece from the array of pieces

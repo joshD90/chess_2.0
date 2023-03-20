@@ -1,4 +1,9 @@
 import { Board } from "../../board/board_class";
+import getSideCanvas from "../../board/sideCanvas/getSideCanvas";
+import {
+  blackPiecesTaken,
+  whitePiecesTaken,
+} from "../../board/sideCanvas/piecesTaken_class";
 import { HypotheticalPosition } from "../../types/legalMoveTypes";
 
 const flipBoard = (
@@ -13,6 +18,12 @@ const flipBoard = (
 
   //this will redraw all our pieces and the coordinates
   board.resizeBoard(canvas);
+
+  //update side canvasses
+  const whiteCanvas = getSideCanvas("white", board.color as "white" | "black");
+  whitePiecesTaken.resizeBoard(whiteCanvas);
+  const blackCanvas = getSideCanvas("white", board.color as "white" | "black");
+  blackPiecesTaken.resizeBoard(blackCanvas);
 
   //once the board is flipped the pawns will need to change the direction they are going based on the color of the board
   position.black.forEach(

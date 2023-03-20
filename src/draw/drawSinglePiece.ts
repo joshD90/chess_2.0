@@ -11,13 +11,19 @@ export const drawPiece = (piece: PieceType, board: Board) => {
   const pieceCoord = anToCoord(piece.an, board);
   const squareWidth = board.width / 8;
 
-  drawPieceByCoord({ x: pieceCoord.x, y: pieceCoord.y }, squareWidth, piece);
+  drawPieceByCoord(
+    { x: pieceCoord.x, y: pieceCoord.y },
+    squareWidth,
+    piece,
+    ctx
+  );
 };
 //draws the piece by coordinate - full piece cannot be plugged in
 export const drawPieceByCoord = (
   coord: Coord,
   squareWidth: number,
-  piece: PieceType | PieceOffBoard
+  piece: PieceType | PieceOffBoard,
+  ctx: CanvasRenderingContext2D
 ) => {
   if (!ctx) return;
   //set our parameters

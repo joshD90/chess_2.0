@@ -20,6 +20,8 @@ import determineStalemate from "./actionsOnPlacement/determineStalemate";
 
 import determineCheckmate from "./actionsOnPlacement/determineCheckmate";
 import determineDrawByInsufficientMaterial from "./actionsOnPlacement/determineDrawByInsufficientMaterial";
+import addPieceToTaken from "./actionsOnPlacement/addPieceToTaken";
+import getPieceByAN from "../utils/getPieceByAN";
 
 const doDrop = (
   squareToDrop: GridSquare,
@@ -47,8 +49,11 @@ const doDrop = (
   //then set first move as false
   pieceToChange.firstMove = false;
 
-  if (landingType.moveType === "attack")
+  if (landingType.moveType === "attack") {
+    const pieceToAddToTaken = getPieceByAN(squareToDrop.an, opponentPieces);
+    if (pieceToAddToTaken) addPieceToTaken(pieceToAddToTaken);
     removePieceByAn(squareToDrop.an, opponentPieces);
+  }
 
   if (landingType.moveType === "enPassante") takeEnPassante(opponentPieces);
 

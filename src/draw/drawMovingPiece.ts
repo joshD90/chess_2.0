@@ -1,10 +1,11 @@
 import { drawPiece, drawPieceByCoord } from "./drawSinglePiece";
-import { canvas } from "../board/canvasContext";
+import { canvas, ctx } from "../board/canvasContext";
 import whitePieces from "../pieces/whitePieces";
 import blackPieces from "../pieces/blackPieces";
 import { board } from "../board/board_class";
 
 const drawMovingPiece = () => {
+  if (!ctx) return;
   const halfSquareWidth = board.width / 16;
   const piecesToSearch = board.color === "white" ? whitePieces : blackPieces;
   //find the activated piece
@@ -16,7 +17,7 @@ const drawMovingPiece = () => {
   //we need to adjust the piece so that the center is drawn on the mouse
 
   //draw that piece
-  drawPieceByCoord(pieceToDraw.movingCoord, board.width / 8, pieceToDraw);
+  drawPieceByCoord(pieceToDraw.movingCoord, board.width / 8, pieceToDraw, ctx);
 };
 
 export default drawMovingPiece;

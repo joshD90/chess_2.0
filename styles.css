@@ -3,12 +3,13 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  min-height: 100vh;
   width: 100vw;
   padding: 0;
   margin: 0;
   box-sizing: border-box;
   position: relative;
+  gap: 1rem;
 }
 .canvas {
   border: 1px solid black;
@@ -81,4 +82,23 @@ input:checked + .slider:before {
 
 .slider.round:before {
   border-radius: 50%;
+}
+
+.sideCanvas {
+  align-self: start;
+}
+
+/* side canvas */
+.sideCanvas {
+  margin-top: 10vh;
+}
+
+@media screen and (max-width: 719px) {
+  body {
+    flex-direction: column;
+  }
+  .sideCanvas {
+    margin-top: 0;
+    margin-left: 10vw;
+  }
 }
