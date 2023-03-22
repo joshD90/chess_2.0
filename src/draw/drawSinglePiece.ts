@@ -29,6 +29,7 @@ export const drawPieceByCoord = (
   //set our parameters
 
   const img = piece.image;
+
   //we need to adjust our x and y values so that the center of the picture is drawn on the central coord
 
   let { x, y } = coord;

@@ -21,7 +21,13 @@ module.exports = {
         use: "ts-loader",
         exclude: /node_modules/,
       },
-      { test: /\.svg$/, use: "svg-inline-loader" },
+      {
+        test: /\.svg$/,
+        use: {
+          loader: "svg-inline-loader",
+          options: { removeSVGTagAttrs: false },
+        },
+      },
     ],
   },
   watch: true,

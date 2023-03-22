@@ -9,9 +9,7 @@ import drawLegalDots from "./drawLegalDots";
 import { legalDots } from "../legalMoves/pieceDirection/legalDots";
 import drawCheck from "./drawCheck";
 import drawQueeningSelection from "./drawQueeningSelection";
-import drawSquareOffBoard from "./drawSquareOffBoard";
-import drawTakenPieces from "./drawTakenPieces";
-import opponentPiecesTakenCtx from "../board/sideCanvas/opponentPiecesTakenContext";
+
 import {
   blackPiecesTaken,
   whitePiecesTaken,
