@@ -10,15 +10,29 @@ body {
   box-sizing: border-box;
   position: relative;
   gap: 1rem;
+  flex-wrap: wrap;
+}
+.boardDiv {
+  background-color: green;
+  width: fit-content;
+  height: fit-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
 }
 .canvas {
   border: 1px solid black;
 }
 
+.topDiv {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+  padding: 0;
+}
 .toggleBox {
-  position: absolute;
-  top: 20px;
-  right: 20px;
+  margin-top: 0;
 }
 
 /* The switch - the box around the slider */
@@ -90,15 +104,49 @@ input:checked + .slider:before {
 
 /* side canvas */
 .sideCanvas {
-  margin-top: 10vh;
+  background-color: yellow;
+}
+
+/* TIMER */
+.timer {
+  position: absolute;
+  width: 50px;
+  height: 3rem;
+  background-color: blue;
+  color: white;
+  margin-right: 45px;
+}
+.opponentTimer {
+  right: 0;
+  top: -3rem;
+}
+.playerTimer {
+  bottom: -3rem;
+  right: 0;
 }
 
 @media screen and (max-width: 719px) {
   body {
+    align-items: flex-start;
+    background: red;
+  }
+  .boardDiv {
     flex-direction: column;
+    width: 100%;
+    align-items: center;
+    background-color: pink;
   }
   .sideCanvas {
     margin-top: 0;
-    margin-left: 10vw;
+  }
+  .timer {
+    height: calc(100vw / 15);
+    margin-right: 0;
+  }
+  .opponentTimer {
+    top: 0;
+  }
+  .playerTimer {
+    bottom: 0;
   }
 }

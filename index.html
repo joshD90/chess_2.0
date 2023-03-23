@@ -10,16 +10,22 @@
     <title>Chess 2.0</title>
   </head>
   <body>
-    <canvas id="sideCanvasOpponent" class="sideCanvas opponentCanv"></canvas>
-    <canvas id="canvas" class="canvas"></canvas>
-    <canvas id="sideCanvasPlayer" class="sideCanvas playerCanv"></canvas>
-
-    <!-- Rounded switch -->
-    <div class="toggleBox">
-      <label class="switch">
-        <input type="checkbox" class="checkbox" checked="true" />
-        <span class="slider round"></span>
-      </label>
+    <div class="topDiv">
+      <!-- Rounded switch -->
+      <div class="toggleBox">
+        <label class="switch">
+          <input type="checkbox" class="checkbox" checked="true" />
+          <span class="slider round"></span>
+        </label>
+      </div>
+    </div>
+    <!-- Chess Board with clock and taken pieces -->
+    <div class="boardDiv">
+      <canvas id="sideCanvasOpponent" class="sideCanvas opponentCanv"></canvas>
+      <canvas id="canvas" class="canvas"></canvas>
+      <canvas id="sideCanvasPlayer" class="sideCanvas playerCanv"></canvas>
+      <div class="timer opponentTimer">Opponent Timer</div>
+      <div class="timer playerTimer">PlayerTimer</div>
     </div>
   </body>
 </html>
