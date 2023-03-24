@@ -1,5 +1,7 @@
+import { indexOf } from "lodash";
 import {
   blackPiecesTaken,
+  PiecesTaken,
   whitePiecesTaken,
 } from "../../board/sideCanvas/piecesTaken_class";
 import { PieceOffBoard } from "../../pieces/pieceOffBoard_class";
@@ -12,13 +14,33 @@ const addPieceToTaken = (piece: PieceType): void => {
     piece.type,
     0
   );
-  if (piece.color === "white") {
-    whitePiecesTaken.pieceArray.push(convertedPiece);
-    whitePiecesTaken.setPieceArrayCoords();
-  }
-  if (piece.color === "black") {
-    blackPiecesTaken.pieceArray.push(convertedPiece);
-    blackPiecesTaken.setPieceArrayCoords();
-  }
+  piece.color === "white"
+    ? pushToArray(whitePiecesTaken, convertedPiece)
+    : pushToArray(blackPiecesTaken, convertedPiece);
 };
 export default addPieceToTaken;
+
+const pushToArray = (
+  piecesTaken: PiecesTaken,
+  convertedPiece: PieceOffBoard
+) => {
+  console.log("pushing to array");
+  //check whether this piece type is already on the board
+  const pieceAlreadyThere = piecesTaken.pieceArray.find(
+    (piece) => piece.type === convertedPiece.type
+  );
+  //if not push the piece to the taken pieces
+  if (!pieceAlreadyThere) {
+    piecesTaken.pieceArray.push(convertedPiece);
+    return;
+  }
+  const indexOfPiece = piecesTaken.pieceArray.indexOf(pieceAlreadyThere);
+  const pieceToMultiply = piecesTaken.pieceArray[indexOfPiece];
+  //pieceAlreadyThere.numberOf could be undefined so set to  if undefined
+  if (!pieceToMultiply.numberOf) {
+    pieceToMultiply.numberOf === 1;
+    return;
+  }
+  //bump up our number
+  pieceToMultiply.numberOf++;
+};

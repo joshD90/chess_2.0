@@ -1,7 +1,11 @@
+:root {
+  --bg-color: #44403c;
+}
+
 body {
-  background-color: beige;
+  background-color: var(--bg-color);
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   min-height: 100vh;
   width: 100vw;
@@ -11,9 +15,9 @@ body {
   position: relative;
   gap: 1rem;
   flex-wrap: wrap;
+  font-family: sans-serif;
 }
 .boardDiv {
-  background-color: green;
   width: fit-content;
   height: fit-content;
   display: flex;
@@ -22,7 +26,7 @@ body {
   position: relative;
 }
 .canvas {
-  border: 1px solid black;
+  border: 2px solid black;
 }
 
 .topDiv {
@@ -32,7 +36,8 @@ body {
   padding: 0;
 }
 .toggleBox {
-  margin-top: 0;
+  margin-top: 0.5rem;
+  margin-right: 0.5rem;
 }
 
 /* The switch - the box around the slider */
@@ -104,7 +109,6 @@ input:checked + .slider:before {
 
 /* side canvas */
 .sideCanvas {
-  background-color: yellow;
 }
 
 /* TIMER */
@@ -112,9 +116,11 @@ input:checked + .slider:before {
   position: absolute;
   width: 50px;
   height: 3rem;
-  background-color: blue;
   color: white;
   margin-right: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .opponentTimer {
   right: 0;
@@ -128,13 +134,11 @@ input:checked + .slider:before {
 @media screen and (max-width: 719px) {
   body {
     align-items: flex-start;
-    background: red;
   }
   .boardDiv {
     flex-direction: column;
-    width: 100%;
+    width: fit-content;
     align-items: center;
-    background-color: pink;
   }
   .sideCanvas {
     margin-top: 0;
