@@ -23,7 +23,7 @@ const addListeners = () => {
   canvas.addEventListener("touchend", deactivatePiece, { passive: true });
   canvas.addEventListener("touchmove", setMovingPieceCoord, { passive: true });
   canvas.addEventListener("touchstart", selectPromotion, { passive: true });
-
+  //toggle event listener
   flipToggle.addEventListener("change", setBoardShouldFlip);
 };
 
