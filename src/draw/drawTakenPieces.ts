@@ -10,20 +10,27 @@ const drawTakenPieces = (
   pieceArray.forEach((piece) => {
     drawSquareOffBoard(piece.coord, squareWidth, ctx, "#44403c");
     drawPieceByCoord(piece.coord, squareWidth, piece, ctx);
-    drawTakenMultiplier(ctx, piece);
   });
+  pieceArray.forEach((piece) =>
+    drawTakenMultiplier(ctx, piece, piece.color, squareWidth)
+  );
 };
 
 const drawTakenMultiplier = (
   ctx: CanvasRenderingContext2D,
-  piece: PieceOffBoard
+  piece: PieceOffBoard,
+  color: string,
+  squareWidth: number
 ) => {
   if (!ctx) return;
   if (!piece.numberOf) return;
-  console.log(piece.numberOf);
+
   ctx.font = "16px Arial";
-  ctx.fillStyle = "blue";
-  ctx.fillText(`${piece.numberOf}`, piece.coord.x, piece.coord.y);
+
+  ctx.fillStyle = color === "white" ? "black" : "white";
+  const x = piece.coord.x;
+  const y = piece.coord.y + squareWidth / 2 - 1;
+  ctx.fillText(`X${piece.numberOf}`, x, y);
 };
 
 export default drawTakenPieces;

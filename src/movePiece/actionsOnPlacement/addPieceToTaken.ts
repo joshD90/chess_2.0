@@ -24,21 +24,24 @@ const pushToArray = (
   piecesTaken: PiecesTaken,
   convertedPiece: PieceOffBoard
 ) => {
-  console.log("pushing to array");
   //check whether this piece type is already on the board
   const pieceAlreadyThere = piecesTaken.pieceArray.find(
     (piece) => piece.type === convertedPiece.type
   );
+
   //if not push the piece to the taken pieces
   if (!pieceAlreadyThere) {
     piecesTaken.pieceArray.push(convertedPiece);
     return;
   }
+
   const indexOfPiece = piecesTaken.pieceArray.indexOf(pieceAlreadyThere);
   const pieceToMultiply = piecesTaken.pieceArray[indexOfPiece];
+
   //pieceAlreadyThere.numberOf could be undefined so set to  if undefined
   if (!pieceToMultiply.numberOf) {
-    pieceToMultiply.numberOf === 1;
+    pieceToMultiply.numberOf = 2;
+
     return;
   }
   //bump up our number

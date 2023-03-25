@@ -9,10 +9,11 @@ import { HypotheticalPosition } from "../../types/legalMoveTypes";
 const flipBoard = (
   board: Board,
   canvas: HTMLCanvasElement,
-  position: HypotheticalPosition
+  position: HypotheticalPosition,
+  setup?: boolean
 ) => {
   //change over who is taking the move
-  board.color = board.color === "white" ? "black" : "white";
+  if (!setup) board.color = board.color === "white" ? "black" : "white";
 
   if (!board.shouldFlip) return;
 

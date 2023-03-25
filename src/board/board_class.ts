@@ -41,4 +41,4 @@ export class Board {
   }
 }
 
-export const board = new Board(canvas, "white");
+export const board = new Board(canvas, "");
