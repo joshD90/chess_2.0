@@ -4,7 +4,7 @@ import blackPieces from "../pieces/blackPieces";
 import whitePieces from "../pieces/whitePieces";
 import mouseRelCanvas from "../utils/mouseRelCanvas";
 //update the a piece's moving piece coordinate to equal the mouse pos
-const setMovingPieceCoord = (e: MouseEvent) => {
+const setMovingPieceCoord = (e: MouseEvent | TouchEvent) => {
   const { left, top } = canvas.getBoundingClientRect();
   const mousePos = mouseRelCanvas(e);
   //only need to search through our own pieces

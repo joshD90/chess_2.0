@@ -13,9 +13,9 @@ body {
   margin: 0;
   box-sizing: border-box;
   position: relative;
-  gap: 1rem;
   flex-wrap: wrap;
   font-family: sans-serif;
+  overflow: hidden;
 }
 .boardDiv {
   width: fit-content;

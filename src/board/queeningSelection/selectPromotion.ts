@@ -6,7 +6,7 @@ import promotePawn from "../../movePiece/actionsOnPlacement/promotePawn";
 import whitePieces from "../../pieces/whitePieces";
 import blackPieces from "../../pieces/blackPieces";
 
-const selectPromotion = (e: MouseEvent) => {
+const selectPromotion = (e: MouseEvent | TouchEvent) => {
   if (!board.queeningSelection) return;
 
   //get our mouse pos

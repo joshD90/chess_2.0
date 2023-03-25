@@ -18,8 +18,12 @@ const addListeners = () => {
   canvas.addEventListener("mouseup", deactivatePiece);
   canvas.addEventListener("mousedown", selectPromotion);
   canvas.addEventListener("mousemove", setMovingPieceCoord);
-  //finger drag listeners
-  // canvas.addEventListener("touchstart",activatePiece);
+  //finger touch listeners
+  canvas.addEventListener("touchstart", activatePiece, { passive: true });
+  canvas.addEventListener("touchend", deactivatePiece, { passive: true });
+  canvas.addEventListener("touchmove", setMovingPieceCoord, { passive: true });
+  canvas.addEventListener("touchstart", selectPromotion, { passive: true });
+
   flipToggle.addEventListener("change", setBoardShouldFlip);
 };
 
