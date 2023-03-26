@@ -1,5 +1,6 @@
 :root {
-  --bg-color: #44403c;
+  /* --bg-color: rgb(68, 64, 60); */
+  --bg-color: #57534e;
 }
 
 body {
@@ -153,4 +154,17 @@ input:checked + .slider:before {
   .playerTimer {
     bottom: 0;
   }
+}
+
+/* Landing Page Section */
+.landingDiv {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--bg-color);
 }

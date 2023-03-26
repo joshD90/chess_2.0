@@ -8,7 +8,7 @@ const drawTakenPieces = (
   squareWidth: number
 ) => {
   pieceArray.forEach((piece) => {
-    drawSquareOffBoard(piece.coord, squareWidth, ctx, "#44403c");
+    drawSquareOffBoard(piece.coord, squareWidth, ctx, "#57534e");
     drawPieceByCoord(piece.coord, squareWidth, piece, ctx);
   });
   pieceArray.forEach((piece) =>

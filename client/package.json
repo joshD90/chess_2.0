@@ -20,6 +20,7 @@
     "jest-webpack-resolver": "^0.3.0",
     "jsdom": "^21.1.0",
     "lodash": "^4.17.21",
+    "socket.io-client": "^4.6.1",
     "ts-jest": "^29.0.5"
   }
 }

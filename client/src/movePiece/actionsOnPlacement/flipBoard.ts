@@ -23,7 +23,7 @@ const flipBoard = (
   //update side canvasses
   const whiteCanvas = getSideCanvas("white", board.color as "white" | "black");
   whitePiecesTaken.resizeBoard(whiteCanvas);
-  const blackCanvas = getSideCanvas("white", board.color as "white" | "black");
+  const blackCanvas = getSideCanvas("black", board.color as "white" | "black");
   blackPiecesTaken.resizeBoard(blackCanvas);
 
   //once the board is flipped the pawns will need to change the direction they are going based on the color of the board

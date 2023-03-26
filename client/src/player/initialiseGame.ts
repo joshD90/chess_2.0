@@ -7,6 +7,10 @@ import whitePieces from "../pieces/whitePieces";
 import blackPieces from "../pieces/blackPieces";
 import flipBoard from "../movePiece/actionsOnPlacement/flipBoard";
 import { canvas } from "../board/canvasContext";
+import {
+  blackPiecesTaken,
+  whitePiecesTaken,
+} from "../board/sideCanvas/piecesTaken_class";
 
 const initialiseGame = (
   playerColor: "white" | "black",
@@ -30,6 +34,9 @@ const initialiseGame = (
   opponent.setTime();
   //the pieces are instantiated prior to the board color being set we need to redefine the move directions based on the newly set board color
   flipBoard(board, canvas, { white: whitePieces, black: blackPieces }, true);
+
+  whitePiecesTaken.context = whitePiecesTaken.setContext();
+  blackPiecesTaken.context = blackPiecesTaken.setContext();
 };
 
 export default initialiseGame;
