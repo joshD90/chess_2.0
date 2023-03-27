@@ -28,7 +28,23 @@
       <div class="timer playerTimer">3:55</div>
     </div>
     <div class="landingDiv">
-      <button id="joinGameButton">Click Here To Join Game</button>
+      <form class="userInputForm">
+        <div class="textInput">
+          <label for="nameInput">Name </label>
+          <input type="text" id="nameInput" name="nameInput" required />
+        </div>
+        <div class="selectInput">
+          <label for="timeSelect"> Select Time </label>
+          <select name="timeSelect" id="timeSelect" required>
+            <option value="600" class="selectOption">10mins</option>
+            <option value="300" class="selectOption">5mins</option>
+            <option value="180" class="selectOption">3mins</option>
+          </select>
+        </div>
+        <button id="joinGameButton" type="submit">
+          Click Here To Join Game
+        </button>
+      </form>
     </div>
   </body>
 </html>
