@@ -6,7 +6,6 @@ import joinSpareRoom from "../assignRooms/joinSpareRoom";
 
 const setUpClientListeners = (socket: Socket, io: MyServer) => {
   socket.on("user-info", (info: UserInfo) => {
-    console.log("information received");
     const { userName, userTime } = info;
     socket.data.name = userName;
     socket.data.time = userTime;

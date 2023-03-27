@@ -4,6 +4,7 @@ import { MyServer } from "../../types/socketTypes";
 
 import createNewRoomName from "./createNewRoomName";
 import getActualRooms from "../../utils/getActualRooms";
+import sendStartGame from "../startGame/sendStartGame";
 
 const joinSpareRoom = (socket: Socket, io: MyServer) => {
   const roomMap = io.of("/").adapter.rooms;
@@ -17,12 +18,12 @@ const joinSpareRoom = (socket: Socket, io: MyServer) => {
   //if so join this room
   if (spareRoom) {
     socket.join(spareRoom);
+    sendStartGame(socket, io);
     return;
   }
   //if not join a new room
   const roomToJoin = createNewRoomName(actualRooms);
   socket.join(roomToJoin);
-  console.log("socket joined room ", roomToJoin);
 };
 
 export default joinSpareRoom;

@@ -11,6 +11,7 @@ import {
   blackPiecesTaken,
   whitePiecesTaken,
 } from "../board/sideCanvas/piecesTaken_class";
+import eventLoop from "../board/eventLoop";
 
 const initialiseGame = (
   playerColor: "white" | "black",
@@ -37,6 +38,8 @@ const initialiseGame = (
 
   whitePiecesTaken.context = whitePiecesTaken.setContext();
   blackPiecesTaken.context = blackPiecesTaken.setContext();
+
+  eventLoop();
 };
 
 export default initialiseGame;

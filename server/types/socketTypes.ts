@@ -6,3 +6,5 @@ export type MyServer = Server<
   DefaultEventsMap,
   DefaultEventsMap
 >;
+
+export type RoomMap = Map<string, Set<string>>;
