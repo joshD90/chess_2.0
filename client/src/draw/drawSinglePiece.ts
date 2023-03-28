@@ -4,6 +4,8 @@ import { PieceOffBoard } from "../pieces/pieceOffBoard_class";
 import { Coord } from "../types/boardTypes";
 import { PieceType } from "../types/pieceTypes";
 import anToCoord from "../utils/anToCoord";
+
+import { whitePiecesImage, blackPiecesImage } from "../pieces/instatiatedImgs";
 //draws the piece by AN - plugging the full piece in
 export const drawPiece = (piece: PieceType, board: Board) => {
   if (!ctx) return;
@@ -28,7 +30,12 @@ export const drawPieceByCoord = (
   if (!ctx) return;
   //set our parameters
 
-  const img = piece.image;
+  const img =
+    piece.color === "white"
+      ? whitePiecesImage.get(piece.type)
+      : blackPiecesImage.get(piece.type);
+
+  if (!img) throw Error("Could not set image");
 
   //we need to adjust our x and y values so that the center of the picture is drawn on the central coord
 

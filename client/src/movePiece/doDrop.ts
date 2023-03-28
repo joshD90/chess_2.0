@@ -22,13 +22,16 @@ import determineCheckmate from "./actionsOnPlacement/determineCheckmate";
 import determineDrawByInsufficientMaterial from "./actionsOnPlacement/determineDrawByInsufficientMaterial";
 import addPieceToTaken from "./actionsOnPlacement/addPieceToTaken";
 import getPieceByAN from "../utils/getPieceByAN";
+import sendTurnInformation from "../socketActions/sendTurnInformation";
+import { Socket } from "socket.io-client";
 
 const doDrop = (
   squareToDrop: GridSquare,
   position: HypotheticalPosition,
   pieceToChange: PieceType,
   board: Board,
-  canvas: HTMLCanvasElement
+  canvas: HTMLCanvasElement,
+  socket: Socket
 ) => {
   const opponentPieces =
     board.color === "white" ? position.black : position.white;
@@ -95,6 +98,8 @@ const doDrop = (
   legalDots.length = 0;
   //make sure that when the turn passes back over we  have a clean slate
   deactivateEnPassante(opponentPieces);
+
+  sendTurnInformation(socket);
 
   //flip the board
   flipBoard(board, canvas, position);

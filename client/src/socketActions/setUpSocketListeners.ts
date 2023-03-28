@@ -1,6 +1,6 @@
 import { Socket } from "socket.io-client";
-import initialiseGame from "../player/initialiseGame";
-import { StartGameObject } from "../types/playerTypes";
+import { StartGameObject, TurnObject } from "../types/playerTypes";
+import refreshPiecesFromTurn from "./refreshPiecesFromTurn";
 import startOnlineGame from "./startOnlineGame";
 
 const setUpSocketListeners = (socket: Socket) => {
@@ -12,6 +12,9 @@ const setUpSocketListeners = (socket: Socket) => {
   });
   socket.on("start-game", (gameObj: StartGameObject) => {
     startOnlineGame(socket, gameObj);
+  });
+  socket.on("change-turn", (turnObj: TurnObject) => {
+    refreshPiecesFromTurn(turnObj);
   });
 };
 

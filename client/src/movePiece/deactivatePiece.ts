@@ -5,8 +5,9 @@ import whitePieces from "../pieces/whitePieces";
 import { board } from "../board/board_class";
 import { canvas } from "../board/canvasContext";
 import doDrop from "./doDrop";
+import { Socket } from "socket.io-client";
 
-const deactivatePiece = (e: MouseEvent | TouchEvent) => {
+const deactivatePiece = (e: MouseEvent | TouchEvent, socket: Socket) => {
   const piecesToSearch = board.color === "white" ? whitePieces : blackPieces;
 
   //find which piece is activated
@@ -25,7 +26,7 @@ const deactivatePiece = (e: MouseEvent | TouchEvent) => {
 
   const position = { white: whitePieces, black: blackPieces };
   //once we have identified our piece and our square we can do the drop logic
-  doDrop(squareToDrop, position, pieceToChange, board, canvas);
+  doDrop(squareToDrop, position, pieceToChange, board, canvas, socket);
 };
 
 export default deactivatePiece;

@@ -18,3 +18,7 @@ export type PieceType = {
   setMovingCoord: (mouseCoord: Coord) => Coord;
   setMoveDirections: () => any;
 };
+
+export type IterableType = {
+  [key: string]: any;
+};

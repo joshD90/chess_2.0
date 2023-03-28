@@ -12,12 +12,14 @@ import {
   whitePiecesTaken,
 } from "../board/sideCanvas/piecesTaken_class";
 import eventLoop from "../board/eventLoop";
+import { Socket } from "socket.io-client";
 
 const initialiseGame = (
   playerColor: "white" | "black",
   time: number,
   playerName: string,
-  opponentName: string
+  opponentName: string,
+  socket: Socket
 ) => {
   //alter our two player classes
   player.name = playerName;
@@ -29,7 +31,7 @@ const initialiseGame = (
   //set up our board
   board.color = playerColor;
   board.makeGrid();
-  addListeners();
+  addListeners(socket);
   //set up timer
   player.setTime();
   opponent.setTime();

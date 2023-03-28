@@ -149,47 +149,6 @@ input:checked + .slider:before {
   right: 80px;
   bottom: -3rem;
 }
-@media screen and (max-width: 719px) {
-  body {
-    align-items: flex-start;
-  }
-  .boardDiv {
-    flex-direction: column;
-    width: fit-content;
-    align-items: center;
-  }
-  .sideCanvas {
-    margin-top: 0;
-  }
-  .timer {
-    height: calc(100vw / 15);
-    margin-right: 0;
-  }
-  .opponentTimer {
-    top: 0;
-  }
-  .playerTimer {
-    bottom: 0;
-  }
-  .name {
-    height: calc(100vw / 15);
-    right: 20%;
-    margin-right: 0;
-  }
-  .opponentName {
-    top: 0;
-  }
-  .playerName {
-    bottom: 0;
-  }
-
-  .playerTimer {
-    bottom: 0;
-  }
-  .userInputForm {
-    width: 90%;
-  }
-}
 
 /* Landing Page Section */
 .landingDiv {
@@ -252,4 +211,46 @@ input:checked + .slider:before {
   font-size: 1.2rem;
   padding: 0.2rem;
   cursor: pointer;
+}
+
+@media screen and (max-width: 719px) {
+  body {
+    align-items: flex-start;
+  }
+  .boardDiv {
+    flex-direction: column;
+    width: fit-content;
+    align-items: center;
+  }
+  .sideCanvas {
+    margin-top: 0;
+  }
+  .timer {
+    height: calc(100vw / 15);
+    margin-right: 0;
+  }
+  .opponentTimer {
+    top: 0;
+  }
+  .playerTimer {
+    bottom: 0;
+  }
+  .name {
+    height: calc(100vw / 15);
+    right: 20%;
+    margin-right: 0;
+  }
+  .opponentName {
+    top: 0;
+  }
+  .playerName {
+    bottom: 0;
+  }
+
+  .playerTimer {
+    bottom: 0;
+  }
+  .userInputForm {
+    width: 90%;
+  }
 }
