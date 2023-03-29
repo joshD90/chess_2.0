@@ -22,7 +22,7 @@ import determineCheckmate from "./actionsOnPlacement/determineCheckmate";
 import determineDrawByInsufficientMaterial from "./actionsOnPlacement/determineDrawByInsufficientMaterial";
 import addPieceToTaken from "./actionsOnPlacement/addPieceToTaken";
 import getPieceByAN from "../utils/getPieceByAN";
-import sendTurnInformation from "../socketActions/sendTurnInformation";
+import sendTurnInformation from "../socketActions/outgoing/sendTurnInformation";
 import { Socket } from "socket.io-client";
 
 const doDrop = (
@@ -99,10 +99,10 @@ const doDrop = (
   //make sure that when the turn passes back over we  have a clean slate
   deactivateEnPassante(opponentPieces);
 
-  sendTurnInformation(socket);
+  if (!board.singlePlayer) sendTurnInformation(socket);
 
   //flip the board
-  flipBoard(board, canvas, position);
+  if (board.singlePlayer) flipBoard(board, canvas, position);
 };
 
 export default doDrop;

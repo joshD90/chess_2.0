@@ -6,10 +6,13 @@ import mouseRelCanvas from "../utils/mouseRelCanvas";
 
 import { legalDots } from "../legalMoves/pieceDirection/legalDots";
 import getLegalMoves from "../legalMoves/getLegalMoves";
-import determineColorSquareByAN from "../utils/determineColorSquareByAN";
+
+import { player } from "../player/player_class";
 
 const activatePiece = (e: MouseEvent | TouchEvent) => {
   if (board.queeningSelection) return;
+  if (!player.myTurn) return;
+
   // //we only want to be able to click our own pieces and move them
   const playerPieces = board.color === "white" ? whitePieces : blackPieces;
 

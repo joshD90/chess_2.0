@@ -13,7 +13,7 @@ const sendStartGame = (socket: Socket, io: MyServer) => {
 
   const startGameObject = { colors: colorObject, names: nameObject };
 
-  io.to(myRoom).emit("start-game", startGameObject);
+  io.in(myRoom).emit("start-game", startGameObject);
 };
 
 export default sendStartGame;

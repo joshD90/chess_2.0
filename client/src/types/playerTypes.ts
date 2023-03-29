@@ -24,7 +24,7 @@ export type StartGameObject = {
 
 export interface TurnObject {
   pieces: { white: Piece[]; black: Piece[] };
-  piecesTaken: { white: PiecesTaken; black: PiecesTaken };
+  piecesTaken: { white: PieceOffBoard[]; black: PieceOffBoard[] };
 }
 export interface WinTurnObject extends TurnObject {
   win: { status: boolean; method: "checkmate" };

@@ -6,6 +6,7 @@ const setTakenPieceCoord = (
   width: number
 ) => {
   if (pieces.length === 0) return null;
+
   const sortedPieces = pieces.sort((a, b) => a.value - b.value);
 
   if (alignment === "vertical") {

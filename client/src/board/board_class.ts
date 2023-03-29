@@ -11,6 +11,7 @@ export class Board {
   color: string;
   shouldFlip: boolean;
   queeningSelection: boolean;
+  singlePlayer: boolean;
 
   constructor(canvas: HTMLCanvasElement, color: string) {
     this.canvas = canvas;
@@ -19,6 +20,7 @@ export class Board {
     this.color = color;
     this.shouldFlip = true;
     this.queeningSelection = false;
+    this.singlePlayer = true;
   }
 
   makeGrid() {

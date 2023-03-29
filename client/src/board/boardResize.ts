@@ -2,7 +2,7 @@ import { canvas } from "./canvasContext";
 import { board } from "./board_class";
 import sizeByWindow from "./sizeByWindow";
 import { queeningSelection } from "./queeningSelection/queeningSelection_Class";
-import getSideCanvasContext from "./sideCanvas/getSideCanvasContext";
+
 import {
   blackPiecesTaken,
   whitePiecesTaken,

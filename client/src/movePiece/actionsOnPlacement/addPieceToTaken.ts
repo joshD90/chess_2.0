@@ -17,6 +17,9 @@ const addPieceToTaken = (piece: PieceType): void => {
   piece.color === "white"
     ? pushToArray(whitePiecesTaken, convertedPiece)
     : pushToArray(blackPiecesTaken, convertedPiece);
+  piece.color === "white"
+    ? whitePiecesTaken.setPieceArrayCoords()
+    : blackPiecesTaken.setPieceArrayCoords();
 };
 export default addPieceToTaken;
 
