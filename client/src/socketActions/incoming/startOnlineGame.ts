@@ -13,7 +13,7 @@ const startOnlineGame = (socket: Socket, gameObj: StartGameObject) => {
 
   //extract our details to set up the game
   const color = gameObj.colors.white === socket.id ? "white" : "black";
-  console.log(gameObj.names[socket.id]);
+
   const playerName = gameObj.names[socket.id];
   const opponentKey = Object.keys(gameObj.names).filter(
     (name) => name !== socket.id

@@ -35,6 +35,7 @@ const initialiseGame = (
 
   //set up our board
   board.color = playerColor;
+  board.shouldFlip = true;
 
   board.makeGrid();
   addListeners(socket);

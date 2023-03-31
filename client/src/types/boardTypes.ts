@@ -20,3 +20,10 @@ export type GridSquare = {
   anNum: ANNum;
   coord: Coord;
 };
+
+export type EndBannerElements = {
+  bannerDiv: HTMLDivElement;
+  exit: HTMLButtonElement;
+  rematch: HTMLButtonElement;
+  newGame: HTMLButtonElement;
+};

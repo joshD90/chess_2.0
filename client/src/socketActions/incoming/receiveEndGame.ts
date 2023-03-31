@@ -3,8 +3,9 @@ import refreshPiecesFromTurn from "./refreshPiecesFromTurn";
 
 import { player, opponent } from "../../player/player_class";
 import showEndBanner from "./showEndBanner";
+import { Socket } from "socket.io-client";
 
-const recieveEndGame = (endGameObj: EndGameObject) => {
+const recieveEndGame = (endGameObj: EndGameObject, socket: Socket) => {
   //update our pieces no matter what
   refreshPiecesFromTurn(endGameObj);
 
@@ -16,7 +17,7 @@ const recieveEndGame = (endGameObj: EndGameObject) => {
   } else {
     endMessage = `It is a Draw by ${method}`;
   }
-  showEndBanner(false, endMessage);
+  showEndBanner(false, endMessage, socket);
   //dont want to be able to click on any pieces
   player.setTurn(false);
   opponent.setTurn(false);

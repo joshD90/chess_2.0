@@ -17,7 +17,7 @@ const setUpSocketListeners = (socket: Socket) => {
     recieveChangeTurn(turnObj);
   });
   socket.on("end-game", (endGameObj: EndGameObject) => {
-    recieveEndGame(endGameObj);
+    recieveEndGame(endGameObj, socket);
   });
 };
 

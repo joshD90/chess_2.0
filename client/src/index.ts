@@ -15,7 +15,7 @@ setUpSocketListeners(socket);
 //handle our submit
 const handleSubmit = (e: Event) => {
   e.preventDefault();
-  sendUserInformation(e, socket);
+  sendUserInformation(socket);
 };
 
 const userForm = document.querySelector(".userInputForm") as HTMLFormElement;

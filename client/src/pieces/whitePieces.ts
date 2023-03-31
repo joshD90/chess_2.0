@@ -1,3 +1,4 @@
+import _ from "lodash";
 import { Piece } from "./piece_class";
 
 const pawn1 = new Piece("white", { col: "a", row: 1 }, "pawn");
@@ -35,5 +36,8 @@ const whitePieces = [
   rook1,
   rook2,
 ];
+//we can use this to reset our pieces on new game
+export const whitePiecesTemplate = _.cloneDeep(whitePieces);
+console.log(whitePiecesTemplate);
 
 export default whitePieces;

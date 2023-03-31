@@ -1,29 +1,29 @@
+import { Socket } from "socket.io-client";
+import { EndBannerElements } from "../types/boardTypes";
 import sendNewGame from "./sendNewGame";
 import sendRematch from "./sendRematch";
 
 const hideResetGame = (
-  endDiv: HTMLDivElement,
-  exitBtn: HTMLButtonElement,
-  rematchBtn: HTMLButtonElement,
-  newGameBtn: HTMLButtonElement
+  endBannerElements: EndBannerElements,
+  socket: Socket
 ) => {
   const exitClosure = () => {
-    hideResetGame(endDiv, exitBtn, rematchBtn, newGameBtn);
+    hideResetGame(endBannerElements, socket);
   };
   const rematchClosure = () => {
-    hideResetGame(endDiv, exitBtn, rematchBtn, newGameBtn);
+    hideResetGame(endBannerElements, socket);
     sendRematch();
   };
   const newGameClosure = () => {
-    hideResetGame(endDiv, exitBtn, rematchBtn, newGameBtn);
-    sendNewGame();
+    hideResetGame(endBannerElements, socket);
+    sendNewGame(socket);
   };
   //we dont want to keep on adding more and more listeners and keep these listeners on while we dont need them
-  exitBtn.removeEventListener("click", exitClosure);
-  rematchBtn.removeEventListener("click", rematchClosure);
-  newGameBtn.removeEventListener("click", newGameClosure);
+  endBannerElements.exit.removeEventListener("click", exitClosure);
+  endBannerElements.rematch.removeEventListener("click", rematchClosure);
+  endBannerElements.newGame.removeEventListener("click", newGameClosure);
 
-  endDiv.classList.add("hidden");
+  endBannerElements.bannerDiv.classList.add("hidden");
 };
 
 export default hideResetGame;
