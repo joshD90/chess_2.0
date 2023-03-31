@@ -1,7 +1,11 @@
+import { Socket } from "socket.io-client";
 import { board } from "../../board/board_class";
 import { canvas } from "../../board/canvasContext";
 import { PieceOffBoard } from "../../pieces/pieceOffBoard_class";
 import { Piece } from "../../pieces/piece_class";
+import { opponent, player } from "../../player/player_class";
+import sendEnd from "../../socketActions/outgoing/sendEndInformation";
+import sendTurnInformation from "../../socketActions/outgoing/sendTurnInformation";
 import { HypotheticalPosition } from "../../types/legalMoveTypes";
 import { PieceType } from "../../types/pieceTypes";
 import determineCheckmate from "./determineNoLegalMoves";
@@ -11,7 +15,8 @@ import setCheck from "./setCheck";
 const promotePawn = (
   pieceChanging: PieceType,
   position: HypotheticalPosition,
-  promotionPiece: PieceOffBoard
+  promotionPiece: PieceOffBoard,
+  socket: Socket
 ) => {
   //create our new piece
   const promotedPiece = new Piece(
@@ -35,10 +40,14 @@ const promotePawn = (
 
   //see whether this promotion has caused check
   const opponentColor = promotedPiece.color === "white" ? "black" : "white";
-  if (determineCheckmate(position, opponentColor, board)) alert("Checkmate");
+  if (determineCheckmate(position, opponentColor, board))
+    sendEnd("checkmate", socket, player, opponent);
+
   setCheck(board, position, opponentColor);
-  //do our turn
-  flipBoard(board, canvas, position);
+  //send the turn for multiplayer
+  if (!board.singlePlayer) return sendTurnInformation(socket);
+  //flip board if single player
+  if (board.singlePlayer) flipBoard(board, canvas, position);
 };
 
 export default promotePawn;

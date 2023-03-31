@@ -23,7 +23,6 @@ const refreshPiecesFromTurn = (turnObj: TurnObject) => {
 
   whitePiecesTaken.setPieceArrayCoords();
   blackPiecesTaken.setPieceArrayCoords();
-  console.log(_.cloneDeep(blackPiecesTaken));
 };
 //instantiate and update piece - cant transmit data classes over socket.io as the methods get lost in the serialisation and deserialisation.  Must reinstantiate + change relevant properites
 const reinstantiatePieces = (pieces: DeserialisedPiece[]): Piece[] => {

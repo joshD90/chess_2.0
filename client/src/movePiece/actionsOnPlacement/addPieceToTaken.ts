@@ -1,4 +1,3 @@
-import { indexOf } from "lodash";
 import {
   blackPiecesTaken,
   PiecesTaken,

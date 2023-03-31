@@ -206,10 +206,63 @@ input:checked + .slider:before {
   font-size: 1.2rem;
   background-color: blue;
 }
-
 #joinGameButton {
   font-size: 1.2rem;
   padding: 0.2rem;
+  cursor: pointer;
+}
+/* Ending Panel Options banner */
+.endDiv {
+  position: absolute;
+  top: 50vh;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40%;
+  height: fit-content;
+  background-color: #f7f7f7;
+  text-align: center;
+  border: 2px solid rgb(49, 49, 49);
+  border-radius: 0.2rem;
+}
+.exitButtonDiv {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.exitButtonDiv button {
+  border: 2px solid gray;
+  background-color: rgb(204, 45, 45);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: red;
+  cursor: pointer;
+  font-weight: 700;
+  margin: 0.2rem 0.2rem 0 0;
+  color: white;
+}
+
+.endDiv h3 {
+  font-size: 1.8rem;
+}
+.endDiv p {
+  font-weight: 600;
+}
+.endButtons {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: calc(100vw / 20);
+  margin-bottom: 1rem;
+}
+.endButtons button {
+  height: 2.5rem;
+  background-color: #769656;
+  border-top-color: #baca44;
+  border-left-color: #baca44;
+  width: 25%;
   cursor: pointer;
 }
 
@@ -253,4 +306,12 @@ input:checked + .slider:before {
   .userInputForm {
     width: 90%;
   }
+  .endDiv {
+    width: 80%;
+  }
+}
+
+/* Utility Classes */
+.hidden {
+  display: none;
 }

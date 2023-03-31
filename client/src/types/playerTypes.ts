@@ -22,16 +22,18 @@ export type StartGameObject = {
   names: NameObject;
 };
 
+export type EndingGameTypes =
+  | "checkmate"
+  | "timeout"
+  | "insufficient"
+  | "stalemate"
+  | "insufficientVsTimeout";
+
 export interface TurnObject {
   pieces: { white: Piece[]; black: Piece[] };
   piecesTaken: { white: PieceOffBoard[]; black: PieceOffBoard[] };
 }
-export interface WinTurnObject extends TurnObject {
-  win: { status: boolean; method: "checkmate" };
-}
-export interface LoseTurnObject extends TurnObject {
-  lose: { status: boolean; method: "timemout" };
-}
-export interface DrawTurnObject extends TurnObject {
-  draw: { status: boolean; method: "insufficient" | "stalemate" };
+export interface EndGameObject extends TurnObject {
+  method: EndingGameTypes;
+  winner?: "white" | "black";
 }

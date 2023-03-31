@@ -5,8 +5,9 @@ import mouseRelCanvas from "../../utils/mouseRelCanvas";
 import promotePawn from "../../movePiece/actionsOnPlacement/promotePawn";
 import whitePieces from "../../pieces/whitePieces";
 import blackPieces from "../../pieces/blackPieces";
+import { Socket } from "socket.io-client";
 
-const selectPromotion = (e: MouseEvent | TouchEvent) => {
+const selectPromotion = (e: MouseEvent | TouchEvent, socket: Socket) => {
   if (!board.queeningSelection) return;
 
   //get our mouse pos
@@ -24,7 +25,7 @@ const selectPromotion = (e: MouseEvent | TouchEvent) => {
   if (!pawnToPromote) return;
 
   const position = { white: whitePieces, black: blackPieces };
-  promotePawn(pawnToPromote, position, pieceSelected);
+  promotePawn(pawnToPromote, position, pieceSelected, socket);
 };
 
 export default selectPromotion;

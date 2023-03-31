@@ -17,7 +17,9 @@ const addListeners = (socket: Socket) => {
   //mouse listeners
   canvas.addEventListener("mousedown", activatePiece);
   canvas.addEventListener("mouseup", (event) => deactivatePiece(event, socket));
-  canvas.addEventListener("mousedown", selectPromotion);
+  canvas.addEventListener("mousedown", (event) =>
+    selectPromotion(event, socket)
+  );
   canvas.addEventListener("mousemove", setMovingPieceCoord);
   //finger touch listeners
   canvas.addEventListener("touchstart", activatePiece, { passive: true });
@@ -29,7 +31,11 @@ const addListeners = (socket: Socket) => {
     }
   );
   canvas.addEventListener("touchmove", setMovingPieceCoord, { passive: true });
-  canvas.addEventListener("touchstart", selectPromotion, { passive: true });
+  canvas.addEventListener(
+    "touchstart",
+    (event) => selectPromotion(event, socket),
+    { passive: true }
+  );
   //toggle event listener
   flipToggle.addEventListener("change", setBoardShouldFlip);
 };

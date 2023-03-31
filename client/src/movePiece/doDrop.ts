@@ -24,6 +24,8 @@ import addPieceToTaken from "./actionsOnPlacement/addPieceToTaken";
 import getPieceByAN from "../utils/getPieceByAN";
 import sendTurnInformation from "../socketActions/outgoing/sendTurnInformation";
 import { Socket } from "socket.io-client";
+import sendEnd from "../socketActions/outgoing/sendEndInformation";
+import { opponent, player } from "../player/player_class";
 
 const doDrop = (
   squareToDrop: GridSquare,
@@ -82,7 +84,7 @@ const doDrop = (
       board
     )
   )
-    return alert("You Have Won By Checkmate");
+    return sendEnd("checkmate", socket, player, opponent);
   if (
     determineStalemate(
       position,
@@ -90,19 +92,19 @@ const doDrop = (
       board
     )
   )
-    return alert("It's a draw by stalemate");
+    return sendEnd("stalemate", socket, player, opponent);
 
   if (determineDrawByInsufficientMaterial(position))
-    return alert("it's a draw by insufficient material");
+    return sendEnd("insufficient", socket, player, opponent);
 
   legalDots.length = 0;
   //make sure that when the turn passes back over we  have a clean slate
   deactivateEnPassante(opponentPieces);
 
-  if (!board.singlePlayer) sendTurnInformation(socket);
+  if (!board.singlePlayer) return sendTurnInformation(socket);
 
   //flip the board
-  if (board.singlePlayer) flipBoard(board, canvas, position);
+  flipBoard(board, canvas, position);
 };
 
 export default doDrop;
