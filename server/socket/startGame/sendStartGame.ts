@@ -9,7 +9,7 @@ const sendStartGame = (socket: Socket, io: MyServer) => {
   const myRoom = getMyRoom(socket, io);
 
   const colorObject = assignColors(roomMap, myRoom, io);
-  const nameObject = getNameObject(roomMap, myRoom, io);
+  const nameObject = getNameObject(roomMap, myRoom, io, "name");
 
   const startGameObject = { colors: colorObject, names: nameObject };
 

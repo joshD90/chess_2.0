@@ -13,6 +13,7 @@ import {
 } from "../board/sideCanvas/piecesTaken_class";
 import eventLoop from "../board/eventLoop";
 import { Socket } from "socket.io-client";
+import resetBoard from "../resetGame.ts/resetBoard";
 
 const initialiseGame = (
   playerColor: "white" | "black",
@@ -42,6 +43,9 @@ const initialiseGame = (
   //set up timer
   player.setTime();
   opponent.setTime();
+
+  //reset pieces on board, taken pieces, legal dots
+  //resetBoard();
   //the pieces are instantiated prior to the board color being set we need to redefine the move directions based on the newly set board color
   flipBoard(board, canvas, { white: whitePieces, black: blackPieces }, true);
 

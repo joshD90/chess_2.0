@@ -32,7 +32,7 @@ const showEndBanner = (
 
   rematchBtn.addEventListener("click", () => {
     hideResetGame(endBannerElements, socket);
-    sendRematch();
+    sendRematch(socket);
   });
   newGameBtn.addEventListener("click", () => {
     hideResetGame(endBannerElements, socket);

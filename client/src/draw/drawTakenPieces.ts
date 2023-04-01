@@ -7,7 +7,7 @@ const drawTakenPieces = (
   pieceArray: PieceOffBoard[],
   squareWidth: number
 ) => {
-  if ((pieceArray.length = 0))
+  if (pieceArray.length === 0)
     return ctx.clearRect(0, 0, squareWidth, squareWidth);
 
   pieceArray.forEach((piece) => {

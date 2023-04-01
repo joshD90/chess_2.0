@@ -12,7 +12,7 @@ const hideResetGame = (
   };
   const rematchClosure = () => {
     hideResetGame(endBannerElements, socket);
-    sendRematch();
+    sendRematch(socket);
   };
   const newGameClosure = () => {
     hideResetGame(endBannerElements, socket);

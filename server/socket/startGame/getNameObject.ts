@@ -1,19 +1,21 @@
 import { NameObject } from "../../types/infoTypes";
 import { MyServer, RoomMap } from "../../types/socketTypes";
 
-const getNameObject = (
+const getSocketDataObject = (
   roomMap: RoomMap,
   roomName: string,
-  io: MyServer
+  io: MyServer,
+  dataKey: string
 ): NameObject => {
   const thisRoom = roomMap.get(roomName);
 
-  const nameObject: NameObject = {};
+  const dataObject: NameObject = {};
   //for all of the sockets in the room assign the key dynamically and assign name based on that id
   thisRoom.forEach(
-    (player) => (nameObject[player] = io.sockets.sockets.get(player).data.name)
+    (player) =>
+      (dataObject[player] = io.sockets.sockets.get(player).data[dataKey])
   );
-  return nameObject;
+  return dataObject;
 };
 
-export default getNameObject;
+export default getSocketDataObject;

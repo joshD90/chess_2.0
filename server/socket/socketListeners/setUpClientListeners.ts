@@ -6,6 +6,7 @@ import joinSpareRoom from "../assignRooms/joinSpareRoom";
 import sendBasicTurn from "../turn/sendBasicTurn";
 import { TurnObject } from "../../types/socketTypes";
 import sendEnd from "../turn/sendEnd";
+import sendStartGame from "../startGame/sendStartGame";
 
 const setUpClientListeners = (socket: Socket, io: MyServer) => {
   //when a player first enters the game they want to play with their name
@@ -23,6 +24,10 @@ const setUpClientListeners = (socket: Socket, io: MyServer) => {
   //when a player makes a move that ends the game
   socket.on("end-game", (endGameObj: EndGameObject) => {
     sendEnd(socket, io, endGameObj);
+  });
+
+  socket.on("rematch", () => {
+    sendStartGame(socket, io);
   });
 };
 
