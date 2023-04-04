@@ -12,8 +12,9 @@ const joinSpareRoom = (socket: Socket, io: MyServer) => {
   const roomMap = io.of("/").adapter.rooms;
   //first leave the room that we are already part of
   const myActualRoom = getMyRoom(socket, io);
-  //if we are restarting a game leave our room
+  //if we are restarting a game leave our room and finish deciding
   if (myActualRoom) socket.leave(myActualRoom);
+  socket.data.deciding = "false";
 
   const actualRooms = getActualRooms(io);
 
@@ -22,7 +23,7 @@ const joinSpareRoom = (socket: Socket, io: MyServer) => {
     const thisRoom = roomMap.get(room);
     //and make sure that this room does not contain someone still deciding whether to play another game
     const roomStillDeciding = checkIfStillDeciding(roomMap, room, io);
-    if (roomStillDeciding) return;
+    if (roomStillDeciding) return false;
     return thisRoom.size < 2;
   });
 
@@ -37,7 +38,7 @@ const joinSpareRoom = (socket: Socket, io: MyServer) => {
   socket.join(roomToJoin);
 };
 //this checks to see whether there is someone in the room but cant enter if they are not ready to play another game yet
-const checkIfStillDeciding = (
+export const checkIfStillDeciding = (
   roomMap: Map<string, Set<string>>,
   thisRoom: string,
   io: MyServer

@@ -11,10 +11,9 @@ const getSocketDataObject = (
 
   const dataObject: NameObject = {};
   //for all of the sockets in the room assign the key dynamically and assign name based on that id
-  thisRoom.forEach(
-    (player) =>
-      (dataObject[player] = io.sockets.sockets.get(player).data[dataKey])
-  );
+  thisRoom.forEach((player) => {
+    dataObject[player] = io.sockets.sockets.get(player).data[dataKey];
+  });
   return dataObject;
 };
 

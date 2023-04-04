@@ -1,6 +1,8 @@
 import { Socket } from "socket.io-client";
 import initialiseGame from "../../player/initialiseGame";
+import resetBoard from "../../resetGame.ts/resetBoard";
 import { StartGameObject } from "../../types/playerTypes";
+import hideWaitingSection from "./hideWaitingSection";
 
 const startOnlineGame = (socket: Socket, gameObj: StartGameObject) => {
   //grab our user input elements
@@ -10,6 +12,11 @@ const startOnlineGame = (socket: Socket, gameObj: StartGameObject) => {
     ".opponentName"
   ) as HTMLDivElement;
   const playerNameDiv = document.querySelector(".playerName") as HTMLDivElement;
+  const waitingSection = document.querySelector(
+    ".waitingSection"
+  ) as HTMLElement;
+
+  resetBoard();
 
   //extract our details to set up the game
   const color = gameObj.colors.white === socket.id ? "white" : "black";
@@ -24,8 +31,9 @@ const startOnlineGame = (socket: Socket, gameObj: StartGameObject) => {
   playerNameDiv.innerText = playerName;
 
   initialiseGame(color, 600, playerName, opponentName, socket, false);
-  coverDiv.style.visibility = "hidden";
-  toggleDiv.style.visibility = "hidden";
+  coverDiv.classList.add("hidden");
+  toggleDiv.classList.add("hidden");
+  hideWaitingSection(false, socket);
 };
 
 export default startOnlineGame;

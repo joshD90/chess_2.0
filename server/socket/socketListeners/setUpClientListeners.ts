@@ -7,6 +7,8 @@ import sendBasicTurn from "../turn/sendBasicTurn";
 import { TurnObject } from "../../types/socketTypes";
 import sendEnd from "../turn/sendEnd";
 import sendStartGame from "../startGame/sendStartGame";
+import cancelGame from "../startGame/cancelGame";
+import tryRematch from "../startGame/tryRematch";
 
 const setUpClientListeners = (socket: Socket, io: MyServer) => {
   //when a player first enters the game they want to play with their name
@@ -27,7 +29,11 @@ const setUpClientListeners = (socket: Socket, io: MyServer) => {
   });
 
   socket.on("rematch", () => {
-    sendStartGame(socket, io);
+    tryRematch(socket, io);
+  });
+
+  socket.on("cancel-game", () => {
+    cancelGame(socket, io);
   });
 };
 

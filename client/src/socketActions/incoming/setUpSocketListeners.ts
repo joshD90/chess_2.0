@@ -4,6 +4,7 @@ import {
   StartGameObject,
   TurnObject,
 } from "../../types/playerTypes";
+import handleRematchFailed from "./handleRematchFailed";
 import recieveEndGame from "./receiveEndGame";
 import recieveChangeTurn from "./recieveChangeTurn";
 
@@ -18,6 +19,9 @@ const setUpSocketListeners = (socket: Socket) => {
   });
   socket.on("end-game", (endGameObj: EndGameObject) => {
     recieveEndGame(endGameObj, socket);
+  });
+  socket.on("rematch-failed", () => {
+    handleRematchFailed();
   });
 };
 

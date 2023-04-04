@@ -1,4 +1,5 @@
 import { Socket } from "socket.io-client";
+import showWaitingBanner from "./showWaitingBanner";
 
 const sendUserInformation = (socket: Socket) => {
   //get our form information
@@ -13,6 +14,8 @@ const sendUserInformation = (socket: Socket) => {
   if (!userName || !userTime) return;
 
   socket.emit("user-info", { userName: userName, userTime: userTime });
+
+  showWaitingBanner(socket);
 };
 
 export default sendUserInformation;
