@@ -7,14 +7,15 @@ import getActualRooms from "../../utils/getActualRooms";
 import sendStartGame from "../startGame/sendStartGame";
 import getMyRoom from "../../utils/getMyRoom";
 import getSocketDataObject from "../startGame/getNameObject";
+import leaveActualRoom from "../socketActions/leaveActualRoom";
 
-const joinSpareRoom = (socket: Socket, io: MyServer) => {
+const joinSpareRoom = async (socket: Socket, io: MyServer) => {
   const roomMap = io.of("/").adapter.rooms;
-  //first leave the room that we are already part of
-  const myActualRoom = getMyRoom(socket, io);
-  //if we are restarting a game leave our room and finish deciding
-  if (myActualRoom) socket.leave(myActualRoom);
+  //if we are part of a room leave it and notify other player, make sure this is completed before continuing on
+  leaveActualRoom(socket, io);
+
   socket.data.deciding = "false";
+  socket.data.openToRematch = "";
 
   const actualRooms = getActualRooms(io);
 
@@ -22,7 +23,7 @@ const joinSpareRoom = (socket: Socket, io: MyServer) => {
   const spareRoom = actualRooms.find((room) => {
     const thisRoom = roomMap.get(room);
     //and make sure that this room does not contain someone still deciding whether to play another game
-    const roomStillDeciding = checkIfStillDeciding(roomMap, room, io);
+    const roomStillDeciding = checkIfStillDeciding(roomMap, room, io, socket);
     if (roomStillDeciding) return false;
     return thisRoom.size < 2;
   });
@@ -41,10 +42,11 @@ const joinSpareRoom = (socket: Socket, io: MyServer) => {
 export const checkIfStillDeciding = (
   roomMap: Map<string, Set<string>>,
   thisRoom: string,
-  io: MyServer
+  io: MyServer,
+  socket: Socket
 ): boolean => {
   if (!thisRoom) return false;
-
+  //returns
   const stillDecidingObj = getSocketDataObject(
     roomMap,
     thisRoom,
@@ -55,7 +57,7 @@ export const checkIfStillDeciding = (
   const decidingArray = Object.values(stillDecidingObj);
 
   //if anyone in the room is still deciding
-  const someoneStillDeciding = decidingArray.some((el) => el === "true");
+  const someoneStillDeciding = decidingArray.some((value) => value === "true");
 
   return someoneStillDeciding;
 };

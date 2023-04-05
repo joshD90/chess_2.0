@@ -9,6 +9,7 @@ import sendEnd from "../turn/sendEnd";
 import sendStartGame from "../startGame/sendStartGame";
 import cancelGame from "../startGame/cancelGame";
 import tryRematch from "../startGame/tryRematch";
+import leaveActualRoom from "../socketActions/leaveActualRoom";
 
 const setUpClientListeners = (socket: Socket, io: MyServer) => {
   //when a player first enters the game they want to play with their name
@@ -27,7 +28,7 @@ const setUpClientListeners = (socket: Socket, io: MyServer) => {
   socket.on("end-game", (endGameObj: EndGameObject) => {
     sendEnd(socket, io, endGameObj);
   });
-
+  //for reassigning rooms
   socket.on("rematch", () => {
     tryRematch(socket, io);
   });
@@ -35,6 +36,12 @@ const setUpClientListeners = (socket: Socket, io: MyServer) => {
   socket.on("cancel-game", () => {
     cancelGame(socket, io);
   });
+
+  socket.on("leave-actual-room", () => leaveActualRoom(socket, io));
+
+  socket.on("remove-openToRematch", () => (socket.data.openToRematch = ""));
+
+  socket.on("leave", (room) => socket.to(room).emit("other-player-left"));
 };
 
 export default setUpClientListeners;

@@ -1,5 +1,5 @@
 import { Socket } from "socket.io-client";
-import hideWaitingSection from "../incoming/hideWaitingSection";
+import hideWaitingSection from "./hideWaitingSection";
 
 const waitingBanner = document.querySelector(".waitingSection") as HTMLElement;
 const waitingCancel = document.querySelector(

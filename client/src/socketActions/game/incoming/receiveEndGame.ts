@@ -1,8 +1,8 @@
-import { EndGameObject } from "../../types/playerTypes";
+import { EndGameObject } from "../../../types/playerTypes";
 import refreshPiecesFromTurn from "./refreshPiecesFromTurn";
 
-import { player, opponent } from "../../player/player_class";
-import showEndBanner from "./showEndBanner";
+import { player, opponent } from "../../../player/player_class";
+import showEndBanner from "../../roomAllocation/banners/showEndBanner";
 import { Socket } from "socket.io-client";
 
 const recieveEndGame = (endGameObj: EndGameObject, socket: Socket) => {

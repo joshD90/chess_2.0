@@ -2,11 +2,11 @@ import { Socket } from "socket.io-client";
 import {
   blackPiecesTaken,
   whitePiecesTaken,
-} from "../../board/sideCanvas/piecesTaken_class";
-import blackPieces from "../../pieces/blackPieces";
-import whitePieces from "../../pieces/whitePieces";
-import { Player } from "../../player/player_class";
-import { EndGameObject, EndingGameTypes } from "../../types/playerTypes";
+} from "../../../board/sideCanvas/piecesTaken_class";
+import blackPieces from "../../../pieces/blackPieces";
+import whitePieces from "../../../pieces/whitePieces";
+import { Player } from "../../../player/player_class";
+import { EndGameObject, EndingGameTypes } from "../../../types/playerTypes";
 
 const sendEnd = (
   type: EndingGameTypes,

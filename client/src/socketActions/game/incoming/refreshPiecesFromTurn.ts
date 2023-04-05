@@ -2,12 +2,12 @@ import {
   blackPiecesTaken,
   PiecesTaken,
   whitePiecesTaken,
-} from "../../board/sideCanvas/piecesTaken_class";
-import blackPieces from "../../pieces/blackPieces";
-import { Piece } from "../../pieces/piece_class";
-import whitePieces from "../../pieces/whitePieces";
-import { DeserialisedPiece, IterableType } from "../../types/pieceTypes";
-import { TurnObject } from "../../types/playerTypes";
+} from "../../../board/sideCanvas/piecesTaken_class";
+import blackPieces from "../../../pieces/blackPieces";
+import { Piece } from "../../../pieces/piece_class";
+import whitePieces from "../../../pieces/whitePieces";
+import { DeserialisedPiece, IterableType } from "../../../types/pieceTypes";
+import { TurnObject } from "../../../types/playerTypes";
 
 import _ from "lodash";
 

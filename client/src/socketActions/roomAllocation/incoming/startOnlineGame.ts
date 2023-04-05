@@ -1,10 +1,13 @@
 import { Socket } from "socket.io-client";
-import initialiseGame from "../../player/initialiseGame";
-import resetBoard from "../../resetGame.ts/resetBoard";
-import { StartGameObject } from "../../types/playerTypes";
-import hideWaitingSection from "./hideWaitingSection";
+import initialiseGame from "../../../player/initialiseGame";
+import resetBoard from "../../../resetGame.ts/resetBoard";
+import { StartGameObject } from "../../../types/playerTypes";
+import hideWaitingSection from "../banners/hideWaitingSection";
 
 const startOnlineGame = (socket: Socket, gameObj: StartGameObject) => {
+  //remove the openToRematch property in case coming from a rematch
+  socket.emit("remove-openToRematch");
+
   //grab our user input elements
   const coverDiv = document.querySelector(".landingDiv") as HTMLDivElement;
   const toggleDiv = document.querySelector(".toggleBox") as HTMLDivElement;

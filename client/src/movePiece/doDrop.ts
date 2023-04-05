@@ -22,9 +22,9 @@ import determineCheckmate from "./actionsOnPlacement/determineCheckmate";
 import determineDrawByInsufficientMaterial from "./actionsOnPlacement/determineDrawByInsufficientMaterial";
 import addPieceToTaken from "./actionsOnPlacement/addPieceToTaken";
 import getPieceByAN from "../utils/getPieceByAN";
-import sendTurnInformation from "../socketActions/outgoing/sendTurnInformation";
+import sendTurnInformation from "../socketActions/game/outgoing/sendTurnInformation";
 import { Socket } from "socket.io-client";
-import sendEnd from "../socketActions/outgoing/sendEndInformation";
+import sendEnd from "../socketActions/game/outgoing/sendEndInformation";
 import { opponent, player } from "../player/player_class";
 
 const doDrop = (

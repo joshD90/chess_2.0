@@ -1,5 +1,5 @@
 import { Socket } from "socket.io-client";
-import showWaitingBanner from "./showWaitingBanner";
+import showWaitingBanner from "../banners/showWaitingBanner";
 
 const sendUserInformation = (socket: Socket) => {
   //get our form information

@@ -1,9 +1,9 @@
 import { io } from "socket.io-client";
 
-import sendUserInformation from "./socketActions/outgoing/sendUserInformation";
+import sendUserInformation from "./socketActions/roomAllocation/outgoing/sendUserInformation";
 import setUpErrorListeners from "./socketActions/setUpErrorListeners";
 import setUpServerActions from "./socketActions/setUpServerActions";
-import setUpSocketListeners from "./socketActions/incoming/setUpSocketListeners";
+import setUpSocketListeners from "./socketActions/setUpSocketListeners";
 
 //create our server instance
 const socket = io("http://localhost:5000");

@@ -1,8 +1,8 @@
 import { Socket } from "socket.io-client";
-import hideResetGame from "../../resetGame.ts/hideResetGame";
-import sendNewGame from "../../resetGame.ts/sendNewGame";
-import sendRematch from "../../resetGame.ts/sendRematch";
-import { EndBannerElements } from "../../types/boardTypes";
+import hideResetGame from "../banners/hideEndBanner";
+import sendNewGame from "../outgoing/sendNewGame";
+import sendRematch from "../outgoing/sendRematch";
+import { EndBannerElements } from "../../../types/boardTypes";
 
 const showEndBanner = (
   singlePlayer: boolean,
