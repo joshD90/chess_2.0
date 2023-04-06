@@ -4,7 +4,7 @@ import {
   StartGameObject,
   TurnObject,
 } from "../types/playerTypes";
-import handleRematchFailed from "./roomAllocation/incoming/handleRematchFailed";
+import handleOtherLeaving from "./roomAllocation/incoming/handleOtherLeaving";
 import recieveEndGame from "./game/incoming/receiveEndGame";
 import recieveChangeTurn from "./game/incoming/recieveChangeTurn";
 
@@ -20,12 +20,9 @@ const setUpSocketListeners = (socket: Socket) => {
   socket.on("end-game", (endGameObj: EndGameObject) => {
     recieveEndGame(endGameObj, socket);
   });
-  //these two are very similar could may be refactored
-  socket.on("rematch-failed", () => {
-    handleRematchFailed(socket);
-  });
+
   socket.on("other-user-left", () => {
-    handleRematchFailed(socket);
+    handleOtherLeaving(socket);
   });
 };
 

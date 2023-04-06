@@ -26,4 +26,5 @@ export type EndBannerElements = {
   exit: HTMLButtonElement;
   rematch: HTMLButtonElement;
   newGame: HTMLButtonElement;
+  header: HTMLHeadElement;
 };

@@ -26,9 +26,6 @@ io.on("connection", (socket: Socket) => {
   setUpErrorListeners(socket);
   setUpSocketListeners(socket);
   setUpClientListeners(socket, io);
-
-  socket.emit("message", "Welcome to the Server");
-  socket.emit("message-for-module", "YAY YOUR FUNCTION IS WORKING");
 });
 
 const PORT = 5000;

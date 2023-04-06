@@ -1,41 +1,35 @@
 import { Socket } from "socket.io-client";
-import hideResetGame from "../banners/hideEndBanner";
+import hideEndBanner from "../banners/hideEndBanner";
 import sendNewGame from "../outgoing/sendNewGame";
 import sendRematch from "../outgoing/sendRematch";
-import { EndBannerElements } from "../../../types/boardTypes";
+
+import { endBannerElements } from "./endBannerElements";
 
 const showEndBanner = (
   singlePlayer: boolean,
   endMessage: string,
-  socket: Socket
+  socket: Socket,
+  rematchDisabled: boolean
 ) => {
-  const endDiv = document.querySelector(".endDiv") as HTMLDivElement;
-  const endHeader = document.querySelector("#endHeader") as HTMLHeadElement;
-  const exitBtn = document.getElementById("endBannerExit") as HTMLButtonElement;
-  const rematchBtn = document.querySelector(".rematchBtn") as HTMLButtonElement;
-  const newGameBtn = document.querySelector(".newGameBtn") as HTMLButtonElement;
+  endBannerElements.bannerDiv.classList.remove("hidden");
+  endBannerElements.header.innerText = endMessage;
+  endBannerElements.rematch.disabled = rematchDisabled;
+  endBannerElements.rematch.style.backgroundColor = rematchDisabled
+    ? "gray"
+    : "#769656";
 
-  endDiv?.classList.remove("hidden");
-  endHeader.innerText = endMessage;
-
-  const endBannerElements: EndBannerElements = {
-    bannerDiv: endDiv,
-    exit: exitBtn,
-    rematch: rematchBtn,
-    newGame: newGameBtn,
-  };
   //only add the event listeners once its visible for performance
   //these are removed in hideResetGame
-  exitBtn.addEventListener("click", () => {
-    hideResetGame(endBannerElements, socket);
+  endBannerElements.exit.addEventListener("click", () => {
+    hideEndBanner(endBannerElements, socket);
   });
 
-  rematchBtn.addEventListener("click", () => {
-    hideResetGame(endBannerElements, socket);
+  endBannerElements.rematch.addEventListener("click", () => {
+    hideEndBanner(endBannerElements, socket);
     sendRematch(socket);
   });
-  newGameBtn.addEventListener("click", () => {
-    hideResetGame(endBannerElements, socket);
+  endBannerElements.newGame.addEventListener("click", () => {
+    hideEndBanner(endBannerElements, socket);
     sendNewGame(socket);
   });
 };

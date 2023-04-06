@@ -11,11 +11,9 @@ import leaveActualRoom from "../socketActions/leaveActualRoom";
 
 const joinSpareRoom = async (socket: Socket, io: MyServer) => {
   const roomMap = io.of("/").adapter.rooms;
-  //if we are part of a room leave it and notify other player, make sure this is completed before continuing on
+  //if we are part of a room leave it and notify other player
   leaveActualRoom(socket, io);
-
-  socket.data.deciding = "false";
-  socket.data.openToRematch = "";
+  console.log("should have left room by now");
 
   const actualRooms = getActualRooms(io);
 
@@ -38,7 +36,13 @@ const joinSpareRoom = async (socket: Socket, io: MyServer) => {
   const roomToJoin = createNewRoomName(actualRooms);
   socket.join(roomToJoin);
 };
+//
+//
+//
+//
+
 //this checks to see whether there is someone in the room but cant enter if they are not ready to play another game yet
+
 export const checkIfStillDeciding = (
   roomMap: Map<string, Set<string>>,
   thisRoom: string,
