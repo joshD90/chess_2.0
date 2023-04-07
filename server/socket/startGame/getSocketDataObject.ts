@@ -8,11 +8,13 @@ const getSocketDataObject = (
   dataKey: string
 ): NameObject => {
   const thisRoom = roomMap.get(roomName);
-
+  console.log(thisRoom, "this room");
   const dataObject: NameObject = {};
   //for all of the sockets in the room assign the key dynamically and assign name based on that id
   thisRoom.forEach((player) => {
-    dataObject[player] = io.sockets.sockets.get(player).data[dataKey];
+    dataObject[player] = io.sockets.sockets
+      .get(player)
+      .data[dataKey]?.toString();
   });
   return dataObject;
 };

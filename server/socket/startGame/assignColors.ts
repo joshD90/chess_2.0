@@ -1,6 +1,6 @@
 import { ColorObject } from "../../types/infoTypes";
 import { MyServer, RoomMap } from "../../types/socketTypes";
-import getSocketDataObject from "../startGame/getNameObject";
+import getSocketDataObject from "../startGame/getSocketDataObject";
 
 const assignColors = (
   roomMap: RoomMap,

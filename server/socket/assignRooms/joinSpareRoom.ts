@@ -5,21 +5,25 @@ import { MyServer } from "../../types/socketTypes";
 import createNewRoomName from "./createNewRoomName";
 import getActualRooms from "../../utils/getActualRooms";
 import sendStartGame from "../startGame/sendStartGame";
-import getMyRoom from "../../utils/getMyRoom";
-import getSocketDataObject from "../startGame/getNameObject";
+import getSocketDataObject from "../startGame/getSocketDataObject";
 import leaveActualRoom from "../socketActions/leaveActualRoom";
+import checkTime from "./checkTime";
 
-const joinSpareRoom = async (socket: Socket, io: MyServer) => {
+const joinSpareRoom = (socket: Socket, io: MyServer) => {
   const roomMap = io.of("/").adapter.rooms;
   //if we are part of a room leave it and notify other player
   leaveActualRoom(socket, io);
-  console.log("should have left room by now");
 
   const actualRooms = getActualRooms(io);
 
   //check are there any rooms that have only 1 person in them
   const spareRoom = actualRooms.find((room) => {
     const thisRoom = roomMap.get(room);
+
+    //if the time does not match with the time attached to the socket its not a spare room
+    const doTimesMatch = checkTime(socket, io, room);
+    if (!doTimesMatch) return false;
+
     //and make sure that this room does not contain someone still deciding whether to play another game
     const roomStillDeciding = checkIfStillDeciding(roomMap, room, io, socket);
     if (roomStillDeciding) return false;

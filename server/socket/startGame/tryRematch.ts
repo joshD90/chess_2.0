@@ -3,7 +3,7 @@ import { Socket } from "socket.io";
 import sendStartGame from "./sendStartGame";
 import getMyRoom from "../../utils/getMyRoom";
 
-import getSocketDataObject from "./getNameObject";
+import getSocketDataObject from "./getSocketDataObject";
 
 const tryRematch = (socket: Socket, io: MyServer): void => {
   const myRoom = getMyRoom(socket, io);

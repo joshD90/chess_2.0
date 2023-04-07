@@ -2,7 +2,7 @@ import { MyServer } from "../../types/socketTypes";
 import { Socket } from "socket.io";
 import getMyRoom from "../../utils/getMyRoom";
 import assignColors from "./assignColors";
-import getNameObject from "./getNameObject";
+import getNameObject from "./getSocketDataObject";
 
 const sendStartGame = (socket: Socket, io: MyServer) => {
   const roomMap = io.of("/").adapter.rooms;

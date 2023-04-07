@@ -7,7 +7,8 @@ import { Server, Socket } from "socket.io";
 import setUpErrorListeners from "./socket/socketListeners/setUpErrorListeners";
 import setUpSocketListeners from "./socket/socketListeners/setUpSocketListeners";
 import setUpClientListeners from "./socket/socketListeners/setUpClientListeners";
-import getActualRooms from "./utils/getActualRooms";
+
+import setupSendTick from "./utils/setupSendTick";
 //we create a new server that can take Restful and sockets by passing the app to the server and then creating a new io server instance
 const app = express();
 const server = http.createServer(app);
@@ -26,6 +27,7 @@ io.on("connection", (socket: Socket) => {
   setUpErrorListeners(socket);
   setUpSocketListeners(socket);
   setUpClientListeners(socket, io);
+  setupSendTick(io);
 });
 
 const PORT = 5000;
