@@ -13,7 +13,7 @@ import {
 } from "../board/sideCanvas/piecesTaken_class";
 import eventLoop from "../board/eventLoop";
 import { Socket } from "socket.io-client";
-import resetBoard from "../resetGame.ts/resetBoard";
+import resetBoard from "../resetGame/resetBoard";
 
 const initialiseGame = (
   playerColor: "white" | "black",

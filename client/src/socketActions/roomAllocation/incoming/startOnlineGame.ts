@@ -1,6 +1,6 @@
 import { Socket } from "socket.io-client";
 import initialiseGame from "../../../player/initialiseGame";
-import resetBoard from "../../../resetGame.ts/resetBoard";
+import resetBoard from "../../../resetGame/resetBoard";
 import { StartGameObject } from "../../../types/playerTypes";
 import { endBannerElements } from "../banners/endBannerElements";
 import hideEndBanner from "../banners/hideEndBanner";

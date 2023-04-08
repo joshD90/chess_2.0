@@ -25,13 +25,24 @@
       <canvas id="sideCanvasOpponent" class="sideCanvas opponentCanv"></canvas>
       <canvas id="canvas" class="canvas"></canvas>
       <canvas id="sideCanvasPlayer" class="sideCanvas playerCanv"></canvas>
-      <div class="name opponentName">Josh</div>
-      <div class="name playerName">James</div>
-      <div class="timer opponentTimer">2:45</div>
-      <div class="timer playerTimer">3:55</div>
+      <div class="name opponentName"></div>
+      <div class="name playerName"></div>
+      <div class="timer opponentTimer"></div>
+      <div class="timer playerTimer"></div>
     </div>
     <div class="landingDiv">
       <form class="userInputForm">
+        <div class="selectInput">
+          <label
+            for="singleOrMulti
+          "
+            >Single Player Or Multiplayer</label
+          >
+          <select name="singleOrMulti" id="singleOrMulti">
+            <option value="multi">Multi Player</option>
+            <option value="single">Single Player</option>
+          </select>
+        </div>
         <div class="textInput">
           <label for="nameInput">Name </label>
           <input type="text" id="nameInput" name="nameInput" required />

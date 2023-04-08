@@ -1,10 +1,12 @@
 import { Socket } from "socket.io-client";
+import { board } from "../../../board/board_class";
 import {
   blackPiecesTaken,
   whitePiecesTaken,
 } from "../../../board/sideCanvas/piecesTaken_class";
 import blackPieces from "../../../pieces/blackPieces";
 import whitePieces from "../../../pieces/whitePieces";
+import doSinglePlayerEnd from "../../../player/doSinglePlayerEnd";
 import { Player } from "../../../player/player_class";
 import { EndGameObject, EndingGameTypes } from "../../../types/playerTypes";
 
@@ -14,6 +16,10 @@ const sendEnd = (
   player: Player,
   opponent: Player
 ) => {
+  //if single player no need to use server
+  if (board.singlePlayer)
+    return doSinglePlayerEnd(type, player, opponent, socket);
+
   //can win by checkmate or win by timeout
   let winner: "white" | "black" | undefined = undefined;
   if (type === "checkmate") {
