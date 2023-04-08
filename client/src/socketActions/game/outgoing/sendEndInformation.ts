@@ -14,8 +14,16 @@ const sendEnd = (
   player: Player,
   opponent: Player
 ) => {
-  const winner =
-    type === "checkmate" ? (player.color as "white" | "black") : undefined;
+  //can win by checkmate or win by timeout
+  let winner: "white" | "black" | undefined = undefined;
+  if (type === "checkmate") {
+    winner = player.color as "white" | "black";
+  } else if (type === "timeout") {
+    winner =
+      player.time === 0
+        ? (opponent.color as "white" | "black")
+        : (player.color as "white" | "black");
+  }
 
   //create our object to send over
   const sendObject: EndGameObject = {

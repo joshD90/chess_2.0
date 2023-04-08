@@ -20,6 +20,8 @@ app.use(cors({ origin: clientDomain }));
 const io = new Server(server, {
   cors: { origin: clientDomain, methods: ["GET", "POST"] },
 });
+//set up our interval tick on the start of the server independent of any connections
+setInterval(() => io.emit("tick"), 1000);
 
 io.on("connection", (socket: Socket) => {
   console.log(`Connection established with ${socket.id}`);
@@ -27,7 +29,7 @@ io.on("connection", (socket: Socket) => {
   setUpErrorListeners(socket);
   setUpSocketListeners(socket);
   setUpClientListeners(socket, io);
-  setupSendTick(io);
+  // setupSendTick(io);
 });
 
 const PORT = 5000;

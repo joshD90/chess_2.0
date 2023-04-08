@@ -36,7 +36,7 @@ const startOnlineGame = (socket: Socket, gameObj: StartGameObject) => {
   opponentNameDiv.innerText = opponentName;
   playerNameDiv.innerText = playerName;
 
-  initialiseGame(color, 600, playerName, opponentName, socket, false);
+  initialiseGame(color, gameObj.time, playerName, opponentName, socket, false);
   coverDiv.classList.add("hidden");
   toggleDiv.classList.add("hidden");
   hideWaitingSection(false, socket);

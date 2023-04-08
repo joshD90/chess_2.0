@@ -1,3 +1,5 @@
+import _ from "lodash";
+
 import { EndGameObject } from "../../../types/playerTypes";
 import refreshPiecesFromTurn from "./refreshPiecesFromTurn";
 
@@ -13,11 +15,13 @@ const recieveEndGame = (endGameObj: EndGameObject, socket: Socket) => {
 
   let endMessage;
   if (endGameObj.winner) {
-    endMessage = `${winner} is the Winner by ${method}`;
+    endMessage = `${_.capitalize(winner)} is the Winner by ${_.capitalize(
+      method
+    )}`;
   } else {
-    endMessage = `It is a Draw by ${method}`;
+    endMessage = `It is a Draw by ${_.capitalize(method)}`;
   }
-  showEndBanner(false, endMessage, socket);
+  showEndBanner(false, endMessage, socket, false);
   //dont want to be able to click on any pieces
   player.setTurn(false);
   opponent.setTurn(false);

@@ -20,6 +20,7 @@ export type NameObject = {
 export type StartGameObject = {
   colors: ColorObject;
   names: NameObject;
+  time: number;
 };
 
 export type EndingGameTypes =

@@ -11,7 +11,11 @@ const sendStartGame = (socket: Socket, io: MyServer) => {
   const colorObject = assignColors(roomMap, myRoom, io);
   const nameObject = getNameObject(roomMap, myRoom, io, "name");
 
-  const startGameObject = { colors: colorObject, names: nameObject };
+  const startGameObject = {
+    colors: colorObject,
+    names: nameObject,
+    time: socket.data.time,
+  };
 
   io.in(myRoom).emit("start-game", startGameObject);
 };

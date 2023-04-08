@@ -9,6 +9,7 @@ import recieveEndGame from "./game/incoming/receiveEndGame";
 import recieveChangeTurn from "./game/incoming/recieveChangeTurn";
 
 import startOnlineGame from "./roomAllocation/incoming/startOnlineGame";
+import handleTick from "../player/handleTick";
 
 const setUpSocketListeners = (socket: Socket) => {
   socket.on("start-game", (gameObj: StartGameObject) => {
@@ -23,6 +24,10 @@ const setUpSocketListeners = (socket: Socket) => {
 
   socket.on("other-user-left", () => {
     handleOtherLeaving(socket);
+  });
+
+  socket.on("tick", () => {
+    handleTick(socket);
   });
 };
 
