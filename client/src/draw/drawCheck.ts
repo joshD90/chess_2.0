@@ -13,7 +13,7 @@ const drawCheck = () => {
   allPieces.forEach((piece) => {
     if (!piece.inCheck) return;
     const coord = anToCoord(piece.an, board);
-    drawSquare(coord, "red");
+    drawSquare(coord, "rgba(168, 2, 2,0.6)");
   });
 };
 

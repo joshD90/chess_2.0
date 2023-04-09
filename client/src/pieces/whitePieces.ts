@@ -38,6 +38,5 @@ const whitePieces = [
 ];
 //we can use this to reset our pieces on new game
 export const whitePiecesTemplate = _.cloneDeep(whitePieces);
-console.log(whitePiecesTemplate);
 
 export default whitePieces;

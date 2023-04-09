@@ -1,6 +1,7 @@
 :root {
   /* --bg-color: rgb(68, 64, 60); */
   --bg-color: #57534e;
+  --dark-green: #769656;
 }
 
 body {
@@ -18,6 +19,37 @@ body {
   font-family: sans-serif;
   overflow: hidden;
 }
+
+/* back button */
+#returnToMenu {
+  position: fixed;
+  top: 0;
+  left: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  gap: 3px;
+  color: white;
+  cursor: pointer;
+  overflow: visible;
+  width: 10vw;
+  height: 10vw;
+  min-width: 3rem;
+  min-height: 3rem;
+  max-width: 5rem;
+  max-height: 5rem;
+}
+#returnToMenu:hover {
+  color: #b7b7b7;
+}
+#returnToMenu svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* board drawing */
 .boardDiv {
   width: fit-content;
   height: fit-content;
@@ -28,80 +60,6 @@ body {
 }
 .canvas {
   border: 2px solid black;
-}
-
-.topDiv {
-  display: flex;
-  width: 100%;
-  justify-content: flex-end;
-  padding: 0;
-}
-.toggleBox {
-  margin-top: 0.5rem;
-  margin-right: 0.5rem;
-}
-
-/* The switch - the box around the slider */
-.switch {
-  position: relative;
-  display: inline-block;
-  width: 60px;
-  height: 34px;
-}
-
-/* Hide default HTML checkbox */
-.switch input {
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-
-/* The slider */
-.slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ccc;
-  -webkit-transition: 0.4s;
-  transition: 0.4s;
-}
-
-.slider:before {
-  position: absolute;
-  content: "";
-  height: 26px;
-  width: 26px;
-  left: 4px;
-  bottom: 4px;
-  background-color: white;
-  -webkit-transition: 0.4s;
-  transition: 0.4s;
-}
-
-input:checked + .slider {
-  background-color: #2196f3;
-}
-
-input:focus + .slider {
-  box-shadow: 0 0 1px #2196f3;
-}
-
-input:checked + .slider:before {
-  -webkit-transform: translateX(26px);
-  -ms-transform: translateX(26px);
-  transform: translateX(26px);
-}
-
-/* Rounded sliders */
-.slider.round {
-  border-radius: 34px;
-}
-
-.slider.round:before {
-  border-radius: 50%;
 }
 
 .sideCanvas {
@@ -160,31 +118,40 @@ input:checked + .slider:before {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: var(--bg-color);
+  /* background-color: var(--bg-color); */
+  background-image: url(./src/assets/chessBackground.webp);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 /* Form section */
 .userInputForm {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   padding: 1rem;
   width: 400px;
-  gap: 2rem;
-  background-color: gray;
+  gap: 1rem;
+  background-color: rgba(128, 128, 128, 0.85);
+  border-radius: 10px;
 }
 
 .textInput {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  padding: 0.3rem;
+  padding: 0.2rem;
   font-size: 1.2rem;
+  border: none;
 }
 .textInput label {
   color: rgb(52, 49, 46);
 }
 .textInput input {
   font-size: 1.2rem;
-  padding: 0.2rem;
+  padding: 0.5rem;
+  background-color: white;
+  border: none;
+  border-radius: 5px;
 }
 
 .selectInput {
@@ -192,6 +159,11 @@ input:checked + .slider:before {
   flex-direction: column;
   gap: 0.5rem;
   padding: 0.3rem;
+  border: none;
+}
+.selectInput :focus,
+.textInput :focus {
+  outline-color: var(--dark-green);
 }
 .selectInput label {
   font-size: 1.2rem;
@@ -200,16 +172,22 @@ input:checked + .slider:before {
 
 .selectInput select {
   font-size: 1.2rem;
-  padding: 0.2rem;
+  padding: 0.5rem;
+  border-radius: 5px;
 }
 .selectOption {
   font-size: 1.2rem;
-  background-color: blue;
 }
 #joinGameButton {
   font-size: 1.2rem;
-  padding: 0.2rem;
+  padding: 0.8rem;
   cursor: pointer;
+  border: none;
+  background-color: var(--dark-green);
+  border-radius: 5px;
+}
+#joinGameButton:hover {
+  background-color: #628045;
 }
 /* Ending Panel Options banner */
 .endDiv {
@@ -222,7 +200,8 @@ input:checked + .slider:before {
   background-color: #f7f7f7;
   text-align: center;
   border: 2px solid rgb(49, 49, 49);
-  border-radius: 0.2rem;
+  border-radius: 0.3rem;
+  border-color: #57534e;
 }
 .exitButtonDiv {
   display: flex;
@@ -230,17 +209,19 @@ input:checked + .slider:before {
   align-items: center;
 }
 .exitButtonDiv button {
-  border: 2px solid gray;
-  background-color: rgb(204, 45, 45);
-  border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: red;
+  border: none;
   cursor: pointer;
-  font-weight: 700;
+  font-weight: 800;
+  font-size: 1.5rem;
   margin: 0.2rem 0.2rem 0 0;
-  color: white;
+  color: #57534e;
+  background-color: none;
+}
+.exitButtonDiv button:hover {
+  color: black;
 }
 
 .endDiv h3 {
@@ -248,6 +229,7 @@ input:checked + .slider:before {
 }
 .endDiv p {
   font-weight: 600;
+  color: #393632;
 }
 .endButtons {
   width: 100%;
@@ -264,6 +246,12 @@ input:checked + .slider:before {
   border-left-color: #baca44;
   width: 25%;
   cursor: pointer;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: 600;
+}
+.endButtons button:hover {
+  background-color: #628045;
 }
 
 /* Waiting Section */

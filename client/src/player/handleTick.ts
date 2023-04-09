@@ -15,7 +15,6 @@ const handleTick = (socket: Socket) => {
     sendEnd("timeout", socket, player, opponent);
   }
   playerToUpdate.setTime();
-  console.log(playerToUpdate.time, "time after sending the endgame");
 };
 
 export default handleTick;

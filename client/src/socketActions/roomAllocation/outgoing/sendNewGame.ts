@@ -11,7 +11,14 @@ const sendNewGame = (socket: Socket) => {
   //if single player
   if (board.singlePlayer) {
     resetBoard();
-    initialiseGame("white", player.time, "Player 1", "Player 2", socket, true);
+    initialiseGame(
+      "white",
+      player.initialTime,
+      "Player 1",
+      "Player 2",
+      socket,
+      true
+    );
     return;
   }
 

@@ -7,11 +7,13 @@ export class Player {
   playerType: "player" | "opponent";
   color?: "white" | "black";
   myTurn?: boolean;
+  initialTime: number;
 
   constructor(name: string, time: number, playerType: "player" | "opponent") {
     this.name = name;
     this.time = time;
     this.playerType = playerType;
+    this.initialTime = time;
   }
 
   getTimeInMinutes() {
@@ -25,6 +27,9 @@ export class Player {
   }
   setColor(color: "white" | "black") {
     return (this.color = color);
+  }
+  setInitialTime(time: number) {
+    return (this.initialTime = time);
   }
 }
 //instantiate and export so we are only dealing with one instance and then alter these instantiations

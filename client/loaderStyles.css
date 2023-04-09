@@ -1,3 +1,9 @@
+:root {
+  /* --bg-color: rgb(68, 64, 60); */
+  --bg-color: #57534e;
+  --dark-green: rgb(118, 150, 86);
+}
+
 .loader {
   transform: rotateZ(45deg);
   perspective: 1000px;
@@ -20,7 +26,7 @@
   animation: 1s spin linear infinite;
 }
 .loader:after {
-  color: #ff3d00;
+  color: var(--dark-green);
   transform: rotateY(70deg);
   animation-delay: 0.4s;
 }

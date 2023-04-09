@@ -14,13 +14,10 @@ const startOnlineGame = (socket: Socket, gameObj: StartGameObject) => {
   //grab our user input elements
   const coverDiv = document.querySelector(".landingDiv") as HTMLDivElement;
   const toggleDiv = document.querySelector(".toggleBox") as HTMLDivElement;
-  const opponentNameDiv = document.querySelector(
-    ".opponentName"
+  const opponentNameDiv = document.getElementById(
+    "opponentName"
   ) as HTMLDivElement;
-  const playerNameDiv = document.querySelector(".playerName") as HTMLDivElement;
-  const waitingSection = document.querySelector(
-    ".waitingSection"
-  ) as HTMLElement;
+  const playerNameDiv = document.getElementById("playerName") as HTMLDivElement;
 
   resetBoard();
 

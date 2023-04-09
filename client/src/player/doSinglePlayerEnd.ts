@@ -13,7 +13,9 @@ const doSinglePlayerEnd = (
   let bannerMsg: string;
 
   if (type === "checkmate" || type === "timeout") {
-    bannerMsg = `${player.color} is the Winner by ${_.capitalize(type)}`;
+    bannerMsg = `${_.capitalize(player.color)} is the Winner by ${_.capitalize(
+      type
+    )}`;
   } else {
     bannerMsg = `It is a Draw by ${_.capitalize(type)}`;
   }

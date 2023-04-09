@@ -16,7 +16,10 @@ const sendUserInformation = (socket: Socket) => {
     | "multi"
     | null;
   //cant send if the user hasn't inputted - perhaps to some alert
-  if (!userName || !userTime || !singleOrMulti) return;
+
+  if (!userTime || !singleOrMulti) return;
+  if (!userName && singleOrMulti === "multi") return;
+
   console.log(singleOrMulti, "single or multi");
   if (singleOrMulti === "single") {
     initialiseGame("white", userTime, "Player 1", "Player 2", socket, true);

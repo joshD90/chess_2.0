@@ -13,7 +13,6 @@ import {
 } from "../board/sideCanvas/piecesTaken_class";
 import eventLoop from "../board/eventLoop";
 import { Socket } from "socket.io-client";
-import resetBoard from "../resetGame/resetBoard";
 
 const initialiseGame = (
   playerColor: "white" | "black",
@@ -28,11 +27,13 @@ const initialiseGame = (
   player.time = time;
   player.setColor(playerColor);
   player.setTurn(playerColor === "white" ? true : false);
+  player.setInitialTime(time);
 
   opponent.name = opponentName;
   opponent.time = time;
   opponent.setColor(playerColor === "white" ? "black" : "white");
   opponent.setTurn(playerColor === "white" ? false : true);
+  opponent.setInitialTime(time);
 
   //set up our board
   board.color = playerColor;
@@ -44,9 +45,6 @@ const initialiseGame = (
   player.setTime();
   opponent.setTime();
 
-  //reset pieces on board, taken pieces, legal dots
-  //resetBoard();
-  //the pieces are instantiated prior to the board color being set we need to redefine the move directions based on the newly set board color
   flipBoard(board, canvas, { white: whitePieces, black: blackPieces }, true);
 
   //once we have carried out this flip we can now set our board to not flip for multiplayer games

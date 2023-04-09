@@ -25,7 +25,7 @@ import getPieceByAN from "../utils/getPieceByAN";
 import sendTurnInformation from "../socketActions/game/outgoing/sendTurnInformation";
 import { Socket } from "socket.io-client";
 import sendEnd from "../socketActions/game/outgoing/sendEndInformation";
-import { opponent, player } from "../player/player_class";
+import { opponent, Player, player } from "../player/player_class";
 
 const doDrop = (
   squareToDrop: GridSquare,
@@ -105,6 +105,18 @@ const doDrop = (
 
   //flip the board
   flipBoard(board, canvas, position);
+  //we need something like do end of turn business
+  switchTurnsSingle(player, opponent, board);
+};
+
+const switchTurnsSingle = (player: Player, opponent: Player, board: Board) => {
+  if (player.color === board.color) {
+    player.setTurn(true);
+    opponent.setTurn(false);
+  } else {
+    player.setTurn(false);
+    opponent.setTurn(true);
+  }
 };
 
 export default doDrop;

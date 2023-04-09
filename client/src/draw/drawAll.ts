@@ -18,7 +18,7 @@ import {
 const drawAll = (board: Board) => {
   drawAllSquares(board.grid);
   drawCheck();
-  drawAllAN(board.grid);
+  // drawAllAN(board.grid);
   drawAllPieces(blackPieces);
   drawAllPieces(whitePieces);
   drawMovingPiece();
