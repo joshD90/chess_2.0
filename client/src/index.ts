@@ -1,4 +1,4 @@
-import { io } from "socket.io-client";
+import { io, Socket } from "socket.io-client";
 import handleSingleOrMultiInputChange from "./player/handleSingleOrMultiInputChange";
 import returnToMenu from "./player/returnToMenu";
 
@@ -30,4 +30,4 @@ const returnToMenuBtn = document.getElementById(
 
 userForm.addEventListener("submit", handleSubmit);
 singleOrMulti.addEventListener("change", handleSingleOrMultiInputChange);
-returnToMenuBtn.addEventListener("click", returnToMenu);
+returnToMenuBtn.addEventListener("click", (e) => returnToMenu(e, socket));

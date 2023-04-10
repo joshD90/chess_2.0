@@ -66,10 +66,6 @@ body {
   align-self: start;
 }
 
-/* side canvas */
-.sideCanvas {
-}
-
 /* TIMER */
 .timer {
   position: absolute;
@@ -118,10 +114,52 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  /* background-color: var(--bg-color); */
   background-image: url(./src/assets/chessBackground.webp);
   background-repeat: no-repeat;
   background-size: cover;
+}
+.helpInfoDiv {
+  position: fixed;
+  top: 0.5rem;
+  right: 0.5rem;
+  border-radius: 50%;
+  width: 8vw;
+  height: 8vw;
+  min-width: 2rem;
+  min-height: 2rem;
+  max-width: 4rem;
+  max-height: 4rem;
+  background-color: #628045;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-style: bold;
+  cursor: pointer;
+  transition: all 0.3s;
+  z-index: 1;
+}
+.helpInfoDiv:hover {
+  border-radius: 0;
+}
+.helpInfoDiv:hover + .helpPar {
+  display: block;
+}
+.helpInfoDiv img {
+  width: 70%;
+  height: 70%;
+}
+.helpPar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  background: var(--bg-color);
+  width: 80%;
+  padding: 1rem;
+  padding-top: 4rem;
+  color: white;
+  line-height: 1.5rem;
+  display: none;
 }
 /* Form section */
 .userInputForm {

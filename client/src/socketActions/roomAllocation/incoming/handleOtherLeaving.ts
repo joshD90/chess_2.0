@@ -1,4 +1,5 @@
 import { Socket } from "socket.io-client";
+import { opponent, player } from "../../../player/player_class";
 import hideWaitingSection from "../banners/hideWaitingSection";
 import showEndBanner from "../banners/showEndBanner";
 
@@ -14,6 +15,8 @@ const handleOtherLeaving = (socket: Socket) => {
     true
   );
   hideWaitingSection(false, socket);
+  player.setTurn(false);
+  opponent.setTurn(false);
 };
 
 export default handleOtherLeaving;

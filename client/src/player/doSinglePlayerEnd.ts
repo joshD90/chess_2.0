@@ -20,8 +20,8 @@ const doSinglePlayerEnd = (
     bannerMsg = `It is a Draw by ${_.capitalize(type)}`;
   }
 
-  player.myTurn = false;
-  opponent.myTurn = false;
+  player.setTurn(false);
+  opponent.setTurn(false);
 
   showEndBanner(true, bannerMsg, socket, false);
 };
