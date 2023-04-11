@@ -9,7 +9,6 @@ const sizeByWindow = (canvas: HTMLCanvasElement): void => {
   }
 
   if (window.innerHeight > window.innerWidth) {
-    console.log("fit to window");
     canvas.width = window.innerWidth;
     canvas.height = window.innerWidth;
     return;

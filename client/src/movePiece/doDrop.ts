@@ -84,7 +84,7 @@ const doDrop = (
       board
     )
   )
-    return sendEnd("checkmate", socket, player, opponent);
+    return sendEnd("checkmate", socket, player, opponent, pieceToChange.color);
   if (
     determineStalemate(
       position,
@@ -92,10 +92,16 @@ const doDrop = (
       board
     )
   )
-    return sendEnd("stalemate", socket, player, opponent);
+    return sendEnd("stalemate", socket, player, opponent, pieceToChange.color);
 
   if (determineDrawByInsufficientMaterial(position))
-    return sendEnd("insufficient", socket, player, opponent);
+    return sendEnd(
+      "insufficient",
+      socket,
+      player,
+      opponent,
+      pieceToChange.color
+    );
 
   legalDots.length = 0;
   //make sure that when the turn passes back over we  have a clean slate

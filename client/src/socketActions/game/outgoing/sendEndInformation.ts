@@ -14,11 +14,12 @@ const sendEnd = (
   type: EndingGameTypes,
   socket: Socket,
   player: Player,
-  opponent: Player
+  opponent: Player,
+  winningColor: string
 ) => {
   //if single player no need to use server
   if (board.singlePlayer)
-    return doSinglePlayerEnd(type, player, opponent, socket);
+    return doSinglePlayerEnd(type, player, opponent, socket, winningColor);
 
   //can win by checkmate or win by timeout
   let winner: "white" | "black" | undefined = undefined;

@@ -14,6 +14,7 @@ const app = express();
 const server = http.createServer(app);
 
 const clientDomain = "http://127.0.0.1:5500";
+// const clientDomain = "https://chess2.joshuadanceywebdev.ie";
 
 app.use(cors({ origin: clientDomain }));
 
@@ -29,10 +30,9 @@ io.on("connection", (socket: Socket) => {
   setUpErrorListeners(socket);
   setUpSocketListeners(socket);
   setUpClientListeners(socket, io);
-  // setupSendTick(io);
 });
 
-const PORT = 5000;
+const PORT = 8802;
 
 server.listen(PORT, () => {
   console.log(`Server is listening on port ${PORT}`);

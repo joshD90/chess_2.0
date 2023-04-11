@@ -41,7 +41,7 @@ const promotePawn = (
   //see whether this promotion has caused check
   const opponentColor = promotedPiece.color === "white" ? "black" : "white";
   if (determineCheckmate(position, opponentColor, board))
-    sendEnd("checkmate", socket, player, opponent);
+    sendEnd("checkmate", socket, player, opponent, board.color);
 
   setCheck(board, position, opponentColor);
   //send the turn for multiplayer

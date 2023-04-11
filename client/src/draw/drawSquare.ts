@@ -12,7 +12,7 @@ const drawSquare = (square: Coord, squareColor: string) => {
 
   color = squareColor;
   if (squareColor === "white") color = "white";
-  if (squareColor === "black") color = "gray";
+  if (squareColor === "black") color = "#4e6439";
 
   //draw our square
   ctx.beginPath();

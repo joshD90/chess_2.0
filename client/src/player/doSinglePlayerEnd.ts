@@ -8,12 +8,18 @@ const doSinglePlayerEnd = (
   type: EndingGameTypes,
   player: Player,
   opponent: Player,
-  socket: Socket
+  socket: Socket,
+  winningColor: string
 ) => {
   let bannerMsg: string;
+  let winner;
+  if (type === "timeout") {
+    winner = player.time === 0 ? opponent.color : player.color;
+  }
+  if (type === "checkmate") winner = winningColor;
 
   if (type === "checkmate" || type === "timeout") {
-    bannerMsg = `${_.capitalize(player.color)} is the Winner by ${_.capitalize(
+    bannerMsg = `${_.capitalize(winner)} is the Winner by ${_.capitalize(
       type
     )}`;
   } else {

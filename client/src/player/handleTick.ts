@@ -12,7 +12,9 @@ const handleTick = (socket: Socket) => {
   playerToUpdate.time--;
   //if one player times out
   if (playerToUpdate.time === 0) {
-    sendEnd("timeout", socket, player, opponent);
+    const otherPlayerColor =
+      playerToUpdate.color === "white" ? "black" : "white";
+    sendEnd("timeout", socket, player, opponent, otherPlayerColor);
   }
   playerToUpdate.setTime();
 };

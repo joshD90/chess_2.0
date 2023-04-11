@@ -1,4 +1,4 @@
-import { io, Socket } from "socket.io-client";
+import { io } from "socket.io-client";
 import handleSingleOrMultiInputChange from "./player/handleSingleOrMultiInputChange";
 import returnToMenu from "./player/returnToMenu";
 
@@ -8,7 +8,11 @@ import setUpServerActions from "./socketActions/setUpServerActions";
 import setUpSocketListeners from "./socketActions/setUpSocketListeners";
 
 //create our server instance
-const socket = io("http://localhost:5000");
+// const socket = io("https://chess2.joshuadanceywebdev.ie", {
+//   path: "/socket.io/",
+// });
+
+const socket = io("http://localhost:8802");
 
 setUpServerActions(socket);
 setUpErrorListeners(socket);
@@ -31,3 +35,16 @@ const returnToMenuBtn = document.getElementById(
 userForm.addEventListener("submit", handleSubmit);
 singleOrMulti.addEventListener("change", handleSingleOrMultiInputChange);
 returnToMenuBtn.addEventListener("click", (e) => returnToMenu(e, socket));
+
+//for the toggle bar information
+const toggleInfo = document.querySelector(".toggleInfoDiv") as HTMLDivElement;
+const toggleInfoPar = document.querySelector(
+  ".toggleInfoPar"
+) as HTMLParagraphElement;
+toggleInfo.addEventListener("click", () => {
+  if (toggleInfoPar.classList.contains("hidden")) {
+    toggleInfoPar.classList.remove("hidden");
+  } else {
+    toggleInfoPar.classList.add("hidden");
+  }
+});
