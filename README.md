@@ -17,6 +17,22 @@ Once all directions iterated through in this manner legal moves have been ascert
 ### Check / checkmate
 Check and checkmate did not introduce any strong novelties to the code however the numerous layers of iterative functions were very tricky to keep track of while coding.  When checking to see whether a move is legal, we must calculate all the legal moves for each of the opponents pieces to see whether our move would potentially land us in check.  We need to be able to create a hypothetical position and see whether any of the legal moves of our opponent is our king square.  To calculate checkmate there is another iteration on top of this, where if our king is in check then we need to run through every iteration of every legal piece move to see whether any of those moves would result in a position where our king was not in check, if there are no such positions then it is game over.
 
+### En-passante
+When any pawn moves forwards two squares on it's first move it enters into en-passante mode which is passed over to the other player where they can base their legal moves on the hypothetical position where the pawn occupies the square behind it.
+
+## Serverside Logic
+### Joining a game
+When a player joins they are given the opportunity to select a game time and enter their username.  This gets sent to the server and it will check all available rooms that match the specifications.  If there are no available rooms the server will create a new socket room which can be joined by another player joining the server.
+
+### Passing game details
+Win conditions are calculated on the side of the player who takes the turn and these win conditions are sent over to the other player along with the updated piece position format.
+
+### Timing
+As timers may not necessarily line up on the clocks of both players computers it was necessary to have an internal tick event emitted to all socket rooms from the server to keep time consistency.
+
+## Getting Started
+
+
 
 
 
