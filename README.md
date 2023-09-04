@@ -6,6 +6,8 @@ An Typescript chess game that can be played in single player mode or in an onlin
 ## Motivation
 I had previously created a project that utilized React and Socket.io however I found that the code was very messy and not correctly modularized.  When I came back to it to fix some of the numerous bugs that was plagueing the site I found it was impossible to make my way through the spaghetti code.  I was recently picking up Typescript and figured that the type checking would really help in helping me navigate my way through the code.  I also realized that due to most of the changes coming from HTML5 canvas or JS code that did not paint to the DOM that having a framework which contained a Virtual DOM and component based structure did not add any additions to either performance or simplicity.  I wanted a chance to write cleaner code for some of the bigger projects that I had as yet undertaken and so redid the app.  I was also learning OOP and so wanted to incorporate classes into the work to condense some of the logic associated with pieces.
 
+---
+
 ## Internal Workings
 ### Drawing
 The draw functionality is built from the board up.  A grid is set up with 64 squares and the central points of each grid square is calculated.  The draw function draws from the board up based on these centralized grid squares with the offset determined by the board with.  The squares are drawn, then the pieces, then the piece that is being moved is drawn based on the mouse position.  Resizing can take place due to the fact that everything is based off the grid so the grid just needs to be recalculated with each redrawing.
@@ -30,7 +32,50 @@ Win conditions are calculated on the side of the player who takes the turn and t
 ### Timing
 As timers may not necessarily line up on the clocks of both players computers it was necessary to have an internal tick event emitted to all socket rooms from the server to keep time consistency.
 
+---
+
 ## Getting Started
+### Prerequisites
+
+Before you begin, ensure you have met the following requirements:
+
+- **Node.js:** You will need Node.js installed on your machine. If you haven't installed it yet, you can download it from the [official Node.js website](https://nodejs.org/). Follow the installation instructions for your specific operating system.
+
+- **npm (Node Package Manager):** npm usually comes bundled with Node.js. After installing Node.js, you can verify if npm is installed by running:
+
+  ```bash
+  npm -v
+
+- Nodemon package was used to develop this app to avoid the need to working out of a dist folder.
+    `npm i -g nodemon`
+
+### Clone Repo
+`git clone https://github.com/joshD90/chess_2.0.git`
+
+### Install Packages
+`cd chess_2.0.git/client`
+
+`npm i`
+
+`cd ../server`
+
+`npm i`
+
+### Getting up and Running
+Go to Root Directory of Project
+
+`cd server`
+`nodemon server.ts`
+
+Open a new terminal window at the root directory of Project
+`cd client`
+`npm run dev`
+
+Go to preferred browser and go to http://localhost:5173
+Open a second tab at http://localhost:5173 if you wish to play simulated multiplayer.
+
+Or even better - why not go to [Live Chess Website](https://chess2.joshuadanceywebdev.ie/) and invite a friend to play.
+
 
 
 
